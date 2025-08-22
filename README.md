@@ -44,7 +44,7 @@ For detailed workflow, check the [docs](./docs/) folder.
 
 ---
 
-## 📊 Example Results
+## 📊 Results
 
 Performance on sample dataset ✅
 Optimization convergence curves 📈
