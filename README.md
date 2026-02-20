@@ -1,8 +1,8 @@
-# LUNA Project - Lunar-Inspired Optimization Algorithm
+# LUNA Algorithm (Lunar-inspired Update & Navigation Algorithm)
 
 🌙 LUNA Algorithm
 
-LUNA (Lutfan’s Unique Neural-based Algorithm) is an optimization and computation framework designed to explore complex problem-solving through intelligent heuristics, inspired by symbiotic and adaptive systems. This repository provides documentation, workflow, and demonstration results of the algorithm.
+LUNA is a novel metaheuristic optimization algorithm inspired by the lunar cycle and tidal forces. It simulates the gravitational pull and phase transitions of the moon to balance exploration and exploitation in complex search spaces.
 
 🚀 Features
 - 🧠 **Intelligent Optimization** – Implements advanced heuristics for adaptive problem-solving.  
