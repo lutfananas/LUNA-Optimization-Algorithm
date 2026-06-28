@@ -2,24 +2,27 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
-[![Benchmark: CEC 2017/2022](https://img.shields.io/badge/benchmark-CEC%202017%20%7C%202022-green.svg)](https://www.cs.cuvic.edu.au/)
+[![Benchmark: CEC 2017/2022](https://img.shields.io/badge/benchmark-CEC%202017%20%7C%202022-green.svg)]()
+[![Paper: 35 pages](https://img.shields.io/badge/paper-35%20pages-orange.svg)](./paper/LUNA_Paper_AMC_Final.pdf)
 
-LUNA is a novel population-based metaheuristic optimization algorithm grounded in **authentic lunar astronomical mechanics**. Unlike existing nature-inspired algorithms that use metaphors superficially, LUNA mathematically encodes three real celestial phenomena into its search dynamics.
+LUNA is a population-based metaheuristic optimization algorithm grounded in **authentic lunar astronomical mechanics**. Unlike existing nature-inspired algorithms that use metaphors superficially, LUNA mathematically encodes four real celestial phenomena directly into its search operators: the vis-viva equation, Kepler's angular rate, lunar libration, and tidal syzygy.
 
 ---
 
-## 🌟 Key Results
+## 🌟 Key Results (Final AMC Submission)
 
-| Benchmark | LUNA Rank | vs AVOA | vs PSO | vs GWO | vs HHO | vs SMA |
-|-----------|-----------|---------|--------|--------|--------|--------|
-| **CEC 2022** (12 functions) | **#1** (tied DE) | 11/12 wins | ✅ | ✅ | ✅ | ✅ |
-| **CEC 2017** (30 functions) | **#3** | 28/30 wins | 28/30 wins | 28/30 wins | 28/30 wins | 30/30 wins |
-| Classical (6 functions) | #4 | Win Rosenbrock | — | — | — | — |
+| Benchmark | Dimension | LUNA Friedman Rank | Notable Wins |
+|-----------|-----------|--------------------|--------------|
+| **CEC 2022** | D=10 | **#1 (1.83)** | Beats AVOA 11/12, GSA 12/12, SMA 12/12 |
+| **CEC 2022** | D=50 | 5.17 (5th of 10) | Beats PSO 11/12, GSA 11/12, SMA 12/12 |
+| **CEC 2022** | D=100 | 5.83 (6th of 10) | Beats PSO, GSA, SMA on majority |
+| **CEC 2017** | D=10 | #3 | Beats AVOA 28/30 |
 
-- 🏆 **Rank #1 on CEC 2022** (Friedman rank 2.00, tied with DE)
-- 📊 **Outperforms AVOA on 28/30 CEC 2017 functions** (zero losses)
-- 🎯 **Reaches global optimum on 5/12 CEC 2022 functions**
-- 📈 **Friedman test highly significant** (p < 10⁻¹⁶)
+- 🏆 **Rank #1 on CEC 2022 D=10** (Friedman 1.83, beats 9 baselines including DE 2.08 and AVOA 6.33)
+- 📊 **7 formal theorems with full proofs**: monotonicity, convergence, exploration bounds, step-size decay, finite expected hitting time, weak ergodicity (Dobrushin coefficient), almost-sure convergence to global optimum
+- 🎯 **High-dimensional experiments**: D=50 and D=100 confirm LUNA remains competitive, beating PSO, GSA, SMA at all dimensions
+- 📈 **Statistical rigor**: Wilcoxon signed-rank, Friedman, Holm-Bonferroni post-hoc, Nemenyi CD diagram, Dolan-Moré ECDF
+- 🔬 **Ablation with Wilcoxon significance**: 7 variants × 20 runs × 12 functions = 1680 trials; LUNA-full significantly outperforms LUNA-no-lateDE (9/12) and LUNA-no-astronomy (12/12)
 
 ---
 
