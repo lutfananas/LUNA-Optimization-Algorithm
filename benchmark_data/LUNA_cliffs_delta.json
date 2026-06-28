@@ -1,0 +1,86 @@
+{
+  "comparison": "LUNA vs DE",
+  "method": "Cliff's delta (non-parametric effect size)",
+  "per_function": [
+    {
+      "function": "F1",
+      "delta": -1.0,
+      "luna_mean": 100.0000003114675,
+      "de_mean": 100.0
+    },
+    {
+      "function": "F2",
+      "delta": -1.0,
+      "luna_mean": 200.00260322011314,
+      "de_mean": 200.00000000000946
+    },
+    {
+      "function": "F3",
+      "delta": 0.695,
+      "luna_mean": 300.01980309639214,
+      "de_mean": 303.0461875416725
+    },
+    {
+      "function": "F4",
+      "delta": -0.37,
+      "luna_mean": 580.0566493085687,
+      "de_mean": 17061.89009101167
+    },
+    {
+      "function": "F5",
+      "delta": 0.205,
+      "luna_mean": 510.4556819630843,
+      "de_mean": 512.6682296122427
+    },
+    {
+      "function": "F6",
+      "delta": 0.515,
+      "luna_mean": 619.1634026608706,
+      "de_mean": 619.1977777967555
+    },
+    {
+      "function": "F7",
+      "delta": -0.865,
+      "luna_mean": 700.1568760378653,
+      "de_mean": 700.0303092718995
+    },
+    {
+      "function": "F8",
+      "delta": 0.425,
+      "luna_mean": 662.7004380201932,
+      "de_mean": 687.5174968338825
+    },
+    {
+      "function": "F9",
+      "delta": -0.36,
+      "luna_mean": 923.5511797818939,
+      "de_mean": 910.6828163177888
+    },
+    {
+      "function": "F10",
+      "delta": -1.0,
+      "luna_mean": 1000.0013789402335,
+      "de_mean": 1000.0000000094949
+    },
+    {
+      "function": "F11",
+      "delta": -0.82,
+      "luna_mean": 1265.939113634887,
+      "de_mean": 1101.4822851905697
+    },
+    {
+      "function": "F12",
+      "delta": -0.94,
+      "luna_mean": 1200.4461068050027,
+      "de_mean": 1200.0291776110396
+    }
+  ],
+  "mean_delta": -0.37625,
+  "interpretation": "medium",
+  "interpretation_scale": {
+    "negligible": "|delta| < 0.147",
+    "small": "0.147 <= |delta| < 0.33",
+    "medium": "0.33 <= |delta| < 0.474",
+    "large": "|delta| >= 0.474"
+  }
+}
