@@ -1,0 +1,1306 @@
+[
+  {
+    "doi": "10.1016/j.amc.2025.129685",
+    "title": "Reinforcement learning in evolutionary game theory: A brief review of recent developments",
+    "year": 2026,
+    "authors": "Xie, Kai; Szolnoki, Attila",
+    "cited_by": 14,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129774",
+    "title": "Adaptive fault tolerant optimal control for high-order fully actuated system and its application in spacecraft attitude tracking using reinforcement learning",
+    "year": 2026,
+    "authors": "Wu, Xueqi; Sun, Wei",
+    "cited_by": 5,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129670",
+    "title": "Investigating the evolutionary dynamics of cooperation on a dynamic network: the influence of aspiration-driven structural adaptations",
+    "year": 2026,
+    "authors": "Huang, Yijie; Chen, Yanhong",
+    "cited_by": 4,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129676",
+    "title": "Hinderance of cooperation by individual solutions: Evolutionary dynamics of three-strategy games combining the prisoner\u2019s dilemma and stag hunt",
+    "year": 2026,
+    "authors": "Takesue, Hirofumi",
+    "cited_by": 2,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129745",
+    "title": "Deep neural network-based adaptive supervisory control for strict-feedback nonlinear systems with sensor and actuator faults",
+    "year": 2026,
+    "authors": "Guo, Shanshan; Li, Jinghao; Yang, Guang-Hong",
+    "cited_by": 2,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129624",
+    "title": "Augmented input-output finite time stabilization and tracking control for networked control systems via adaptive event-triggered mechanism",
+    "year": 2026,
+    "authors": "Muthusamy, Vijayakumar",
+    "cited_by": 2,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129743",
+    "title": "Adaptive fuzzy neural network-based smooth-switching gain dynamic surface control for constrained manipulator with error-based nonlinear disturbance observer",
+    "year": 2026,
+    "authors": "Yang, Qing; Yu, Haisheng; Meng, Xiangxiang",
+    "cited_by": 2,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129903",
+    "title": "Memory-based evolutionary prisoner\u2019s dilemma game with neighbor screening mechanism",
+    "year": 2026,
+    "authors": "Ma, Jinlong; Wang, Guanghui",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2026.130035",
+    "title": "Finite-time P2P filtering for hidden Markov jump systems with adaptive memory event-triggered mechanism: A packet loss compensation strategy",
+    "year": 2026,
+    "authors": "Wang, Nan; Yu, Lu",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2026.130040",
+    "title": "An evolutionary game model of disease-vaccination strategy in multiplex hypernetwork",
+    "year": 2026,
+    "authors": "Wang, Min; Wang, Peiwen; Qin, Qiong",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129793",
+    "title": "Assessing the social dilemmas in eco-evolutionary dynamics of cooperation, cheating, and resistance under antibiotic pressure",
+    "year": 2026,
+    "authors": "Begum, Saleha; Islam, Md. Refath; Kabir, K.M. Ariful",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129862",
+    "title": "An evolutionary game analysis of a dynamically switching zero-determinant strategy",
+    "year": 2026,
+    "authors": "Huang, Huaihe; Ye, Ye; Bao, Wei",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2026.130086",
+    "title": "Dynamic portfolio optimization under uncertainty: A penalty-function-based neural solver",
+    "year": 2026,
+    "authors": "Mourtas, Spyridon D.",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2026.130192",
+    "title": "Adaptive predefined-time asymptotic tracking control for uncertain switched nonlinear systems with deferred constraints",
+    "year": 2026,
+    "authors": "Liu, Shuo; Zhang, Huaguang; Pang, Hongbo",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129899",
+    "title": "Strong convergence and Mittag-Leffler stability of stochastic theta method for time-changed stochastic differential equations",
+    "year": 2026,
+    "authors": "Chen, Jingwei; Ye, Jun; Chen, Jinwen",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2026.129992",
+    "title": "On well-posedness and Euler scheme for regime-switching stochastic differential equations with discontinuous drift coefficient",
+    "year": 2026,
+    "authors": "Vashistha, Divyanshu; Kumar, Chaman; Gupta, Raj Karan",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129895",
+    "title": "A sampling sub-interval error-based stochastic feedback sampled-data control for nonlinear stochastic Markovian jump systems",
+    "year": 2026,
+    "authors": "Wang, Yingchun; Song, Siyong; Mu, Yunfei",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2026.130154",
+    "title": "Design and convergence analysis of a new efficient iterative method for solving systems of nonlinear equations with applications in economic dynamics and physical modeling",
+    "year": 2026,
+    "authors": "Erfanifar, Raziyeh; Hajarian, Masoud",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129704",
+    "title": "Convergence of a positivity preserving logarithmic truncated EM method for SDEs with discontinuous drift coefficients",
+    "year": 2026,
+    "authors": "Haghighi, Amir",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129811",
+    "title": "On the convergence rate of approximation for distribution-dependent stochastic differential equations with H\u00f6lder continuous drift",
+    "year": 2026,
+    "authors": "Wang, Lixi; Li, Junping",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2026.129974",
+    "title": "Adaptive parameter-space refinement and Markov state models for eco-epidemiological dynamics",
+    "year": 2026,
+    "authors": "Hern\u00e1ndez-L\u00f3pez, Eymard; Ullah, Mohammad Sharif; Wences, Giovanni",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129632",
+    "title": "T-S fuzzy fault-tolerant load frequency control for power systems with energy storage system under DoS attacks and actuator failures: A two-step adaptive event-triggered mechanism",
+    "year": 2026,
+    "authors": "Zhang, Yuzhuo; Luo, Mengzhuo; Cheng, Jun",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2026.130071",
+    "title": "S-asymptotically (\u03c9, c)-periodic behavior of hybrid-time shunting inhibitory cellular neural networks with delays and stochastic perturbations",
+    "year": 2026,
+    "authors": "Bharti, Puja; Dhama, Soniya",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2026.130166",
+    "title": "An extrapolated hybrid framework for efficient simulation of coupled reaction-diffusion systems: Stability, convergence, and applications",
+    "year": 2026,
+    "authors": "Ullah, Inayat; Xu, Yingxiang",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129854",
+    "title": "Application of Runge\u2013Kutta method with non-standard finite difference for the construction of preconditioned gradient methods",
+    "year": 2026,
+    "authors": "Krivovichev, Gerasim V.; Semina, Ksenia I.",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2026.130212",
+    "title": "Static output feedback and observer-based control design of spatial 2-D linear stochastic parabolic PDE systems",
+    "year": 2026,
+    "authors": "Wang, Qian; Lu, Zhiyi; Wang, Zi-Peng",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129364",
+    "title": "Evolutionary games for cooperation in open data management",
+    "year": 2025,
+    "authors": "Benko, Tina P.; Pi, Bin; Li, Qin",
+    "cited_by": 8,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129257",
+    "title": "Prescribed-time synchronization of hyperchaotic fuzzy stochastic PMSM model with an application to secure communications",
+    "year": 2025,
+    "authors": "Rajendran, Sangeetha; Kaliyaperumal, Palanivel",
+    "cited_by": 5,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129112",
+    "title": "Jarratt-type methods and their convergence analysis without using Taylor expansion",
+    "year": 2025,
+    "authors": "Bate, Indra; Senapati, Kedarnath; George, Santhosh",
+    "cited_by": 5,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129380",
+    "title": "How predator harvesting affects prey-predator dynamics in deterministic and stochastic environments?",
+    "year": 2025,
+    "authors": "Mondal, Bapin; Mandal, Sayan; Tiwari, Pankaj Kumar",
+    "cited_by": 5,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129406",
+    "title": "A co-evolutionary model of information, behavior, and epidemics in multiplex networks: Incorporating subjective and objective factors",
+    "year": 2025,
+    "authors": "Yu, Yue; Huo, Liang'an",
+    "cited_by": 4,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129107",
+    "title": "Secure adaptive output-feedback tracking control for a class of uncertain nonlinear systems in the presence of sensor and actuator faults under DoS and injection attacks",
+    "year": 2025,
+    "authors": "Baghi, Hamidreza; Abdollahi, Farzaneh; Talebi, Heidar Ali",
+    "cited_by": 4,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129333",
+    "title": "Stabilization of hybrid stochastic neutral-type systems with non-differentiable delays under high nonlinearity via discrete-time feedback control",
+    "year": 2025,
+    "authors": "Huang, Yueli; Lv, Yuan; Zhu, Quanxin",
+    "cited_by": 4,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129282",
+    "title": "Stochastic stability of networked control systems with packet disordering via a gain-scheduling controller",
+    "year": 2025,
+    "authors": "Ji, Huihui; Xu, Shengyuan; Zhang, He",
+    "cited_by": 4,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129401",
+    "title": "First optimal vectorial eighth-order iterative scheme for solving non-linear systems",
+    "year": 2025,
+    "authors": "Cordero, Alicia; Torregrosa, Juan R.; Triguero-Navarro, Paula",
+    "cited_by": 4,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129255",
+    "title": "A study on multi-information diffusion model considering dual social reinforcement effect from the perspective of evolutionary game",
+    "year": 2025,
+    "authors": "Ma, Yuanyuan; Zhang, Qiannan; Xie, Leilei",
+    "cited_by": 3,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129330",
+    "title": "Quaternion modified conjugate gradient algorithm to solve Sylvester-type quaternion matrix equations with generalized coupled form as well as application",
+    "year": 2025,
+    "authors": "Ke, Yifen; Cai, Xiaomin; Liao, Riwei",
+    "cited_by": 3,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129177",
+    "title": "Time delay effects on evolutionary dynamics of N-player trust game with diverse investment behaviors",
+    "year": 2025,
+    "authors": "Su, Xin; Guo, Ruqiang; Hua, Shijia",
+    "cited_by": 3,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129003",
+    "title": "Dynamic event-triggered predefined-time adaptive attitude control for a QUAV with unknown deception attacks",
+    "year": 2025,
+    "authors": "Zhu, Guanchao; Luo, Min; Cui, Guozeng",
+    "cited_by": 3,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129059",
+    "title": "Reinforcement learning-based adaptive event-triggered control of multi-agent systems with time-varying dead-zone",
+    "year": 2025,
+    "authors": "Li, Xin; He, Dakuo; Zhang, Qiang",
+    "cited_by": 3,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129505",
+    "title": "Environmental information perception enhances cooperation in stochastic public goods games via Q-learning",
+    "year": 2025,
+    "authors": "Li, Yipeng; Hu, Xiangyue; Jin, Xing",
+    "cited_by": 3,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129120",
+    "title": "Insider trading at a random deadline with correlation between dynamic asset and stochastic liquidity",
+    "year": 2025,
+    "authors": "Qiu, Jixiu; Zhou, Yonghui",
+    "cited_by": 3,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129152",
+    "title": "A weighted switching sequence optimization algorithm for static output feedback control synthesis of nonlinear systems",
+    "year": 2025,
+    "authors": "Gao, Jingjing; Xie, Xiangpeng",
+    "cited_by": 2,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129219",
+    "title": "Convergence analysis of a regularized Newton method with generalized regularization terms for unconstrained convex optimization problems",
+    "year": 2025,
+    "authors": "Yamakawa, Yuya; Yamashita, Nobuo",
+    "cited_by": 2,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129027",
+    "title": "Adaptive distributed unknown input observer for linear systems",
+    "year": 2025,
+    "authors": "Zhou, Dan-Dan; Zhao, Ran",
+    "cited_by": 2,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129550",
+    "title": "Adaptive neural fixed-time sampled-data output-feedback stabilization for a class of nonlinear systems",
+    "year": 2025,
+    "authors": "Mao, Jun; Li, Qiang; Wang, Ronghao",
+    "cited_by": 2,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129527",
+    "title": "Contractivity of stochastic \u03b8-methods under non-global Lipschitz conditions",
+    "year": 2025,
+    "authors": "Bi\u0161\u010devi\u0107, Helena; D'Ambrosio, Raffaele; Di Giovacchino, Stefano",
+    "cited_by": 2,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129229",
+    "title": "Reinforcement learning-based linear quadratic tracking control for partially unknown Markov jump singular interconnected systems",
+    "year": 2025,
+    "authors": "Jia, Guolong; Yang, Qing; Liu, Jinxu",
+    "cited_by": 2,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129541",
+    "title": "Asynchronous bumpless transfer control for stochastic hidden semi-Markovian jump systems against deception attacks",
+    "year": 2025,
+    "authors": "Zhang, Suhuan; Zhu, Fanglai",
+    "cited_by": 2,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128986",
+    "title": "Local structure-preserving algorithms for the nonlinear Schr\u00f6dinger equation with power law nonlinearity",
+    "year": 2025,
+    "authors": "Luo, Fangwen; Tang, Qiong; Huang, Yiting",
+    "cited_by": 2,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129231",
+    "title": "Maximally efficient damped composed Newton-type methods to solve nonlinear systems of equations",
+    "year": 2025,
+    "authors": "Cordero, Alicia; Rojas-Hiciano, Renso V.; Torregrosa, Juan R.",
+    "cited_by": 2,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129040",
+    "title": "A fast local search based memetic algorithm for the parallel row ordering problem",
+    "year": 2025,
+    "authors": "Palubeckis, Gintaras",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129130",
+    "title": "Analysis and control of demand response in smart grids: An evolutionary game method",
+    "year": 2025,
+    "authors": "Zhou, Mengyu; Liu, Xingwen; Hu, Qi",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129228",
+    "title": "WENO based adaptive image zooming algorithm",
+    "year": 2025,
+    "authors": "Crnkovi\u0107, Bojan; \u0160kifi\u0107, Jerko; Bosner, Tina",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129302",
+    "title": "Effective data reduction algorithm for topological data analysis",
+    "year": 2025,
+    "authors": "Choi, Seonmi; Oh, Jinseok; Park, Jeong Rye",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129508",
+    "title": "A hybrid dynamic mode decomposition algorithm combining random and sparsity promoting and its application to viscoelastic flow around circular cylinder",
+    "year": 2025,
+    "authors": "Li, Xuan; Su, Jin; Feng, Jin-Qian",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129004",
+    "title": "Barrier-function based adaptive trajectory tracking control for high-order nonlinear systems with collision avoidance",
+    "year": 2025,
+    "authors": "Zhang, Lili; Liu, Chenglong; An, Liwei",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129305",
+    "title": "Adaptive FTPP control of switched stochastic nonlinearly parameterized systems with asymptotic tracking performance",
+    "year": 2025,
+    "authors": "Liu, Yanli; Sun, Yihua; Hao, Li-Ying",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129110",
+    "title": "Disturbance observer-based fuzzy adaptive switched tuning control of uncertain nonlinear systems with full state constraints",
+    "year": 2025,
+    "authors": "Liu, Ming-Rui; Wu, Li-Bing; Sang, Hong",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129345",
+    "title": "Fixed-time stability criteria and adaptive state constrained control for uncertain switched nonlinear systems",
+    "year": 2025,
+    "authors": "Liu, Shuo; Zhang, Huaguang; Pang, Hongbo",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129442",
+    "title": "Event-triggered adaptive control for nonlinearly parameterized higher-order systems with sensor fault",
+    "year": 2025,
+    "authors": "Sun, Zong-Yao; Wang, Xing-Xing; Li, Jiao-Jiao",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129279",
+    "title": "A composite filter-based approach to adaptive prescribed-time output-feedback control of strict-feedback nonlinear systems with output and input quantization",
+    "year": 2025,
+    "authors": "Chen, Chen; Li, Jinghao",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129342",
+    "title": "The supercloseness property and global superconvergence analysis for the transient conduction-convection equations",
+    "year": 2025,
+    "authors": "Xiao, Liuchao; Li, Minghao; Li, Zhenzhen",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129284",
+    "title": "Convergence analysis of an efficient multistep pseudo-spectral continuous Galerkin approach for solving Volterra integro-differential equations",
+    "year": 2025,
+    "authors": "Yang, Yin; Yao, Pai; Tohidi, Emran",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129465",
+    "title": "Long time H1-norm stability and suboptimal convergence of a fully discrete L2-version compact difference method on nonuniform mesh grids to solve fourth-order subdiffusion equations",
+    "year": 2025,
+    "authors": "Jiang, Huifa; Tohidi, Emran",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129058",
+    "title": "Efficient finite element strategy using enhanced high-order and second-derivative-free variants of Newton's method",
+    "year": 2025,
+    "authors": "Laadhari, Aymen; Temimi, Helmi",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129560",
+    "title": "Decentralized dynamic event-triggered passive bipartite synchronization for semi-Markov jump cooperation-competition neural networks under hybrid random cyber-attacks",
+    "year": 2025,
+    "authors": "Shi, Liangyao; Wang, Jing",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129267",
+    "title": "On discrete stochastic p-Laplacian complex-valued Ginzburg-Landau equations driven by superlinear L\u00e9vy noise",
+    "year": 2025,
+    "authors": "Zeng, Sangui; Yang, Xiulan; Long, Jianren",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129416",
+    "title": "Maneuvering control of stochastic nonlinear systems with unknown covariance noise",
+    "year": 2025,
+    "authors": "Zhang, Ce; Feng, Likang; Wu, Zhaojing",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129595",
+    "title": "SOS-based secure consensus control for stochastic nonlinear MASs against multiple DoS attacks",
+    "year": 2025,
+    "authors": "Zhang, Zhen; Che, Wei-Wei",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129434",
+    "title": "Out-of-equilibrium inference of feeding rates through population data from generic consumer-resource stochastic dynamics",
+    "year": 2025,
+    "authors": "Capit\u00e1n, Jos\u00e9 A.; Alonso, David",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129039",
+    "title": "A payoff equality perspective for evolutionary games: Mental accounting and cooperation promotion",
+    "year": 2025,
+    "authors": "Liu, Yandi; Li, Yonghui",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129403",
+    "title": "An evolutionary game-based vicsek model with a fixed number of neighbors",
+    "year": 2025,
+    "authors": "Zhao, Hui; Zhang, Zhenyu; Tchappi, Igor",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129596",
+    "title": "Research on monitoring mechanism of autonomous taxi: an evolutionary game approach",
+    "year": 2025,
+    "authors": "Li, Kun; Wang, Xia; Lu, Fei",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129268",
+    "title": "An algebraic algorithm for the total least squares problem in commutative quaternionic theory",
+    "year": 2025,
+    "authors": "Jiang, Tongsong; Zhang, Dong; Guo, Zhenwei",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129497",
+    "title": "Community reciprocity promotes cooperation in a network evolutionary prisoner\u2019s dilemma game",
+    "year": 2025,
+    "authors": "Li, Lin; Lv, Jingyu; Ma, Lili",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129028",
+    "title": "Improved algorithm for the optimal quantization of single- and multivariate random functions",
+    "year": 2025,
+    "authors": "Ma, Liyang; Conus, Daniel; Huang, Wei-Min",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129498",
+    "title": "Prescribed-time distributed resource allocation algorithm for heterogeneous linear multi-agent networks with unbalanced directed communication",
+    "year": 2025,
+    "authors": "Lian, Yuxiao; Zhang, Baoyong; Yuan, Deming",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129114",
+    "title": "A Lagrange barrier approach for the minimum concave cost supply problem via a logarithmic descent direction algorithm",
+    "year": 2025,
+    "authors": "Yu, Yaolong; Wu, Zhengtian; Jiang, Baoping",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129203",
+    "title": "A sparse optimization approach for simultaneous orthogonal tensor diagonalization",
+    "year": 2025,
+    "authors": "Li, Xinying; Chang, Chao; Li, Jianze",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129001",
+    "title": "Nonlinear conjugate gradient method for vector optimization on Riemannian manifolds with retraction and vector transport",
+    "year": 2025,
+    "authors": "Chen, Kangming; Fukuda, Ellen Hidemi; Sato, Hiroyuki",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129428",
+    "title": "Interaction topology optimization by adjustment of edge weights to improve the consensus convergence and prolong the sampling period for a multi-agent system",
+    "year": 2025,
+    "authors": "Xu, Tongyou; Tan, Ying-Ying; Gao, Shanshan",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129126",
+    "title": "Distributed adaptive moving horizon estimation for multi-sensor networks subject to quantization effects",
+    "year": 2025,
+    "authors": "Lv, Yuan-Wei; Yang, Guang-Hong; Dimirovski, Georgi Marko",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129158",
+    "title": "H\u221e adaptive ETF control for degenerate jump systems under actuator faults and impulsive deception attacks with application to DCMIP device",
+    "year": 2025,
+    "authors": "Wu, Yifan; Zhuang, Guangming; Jiang, Mengmeng",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129467",
+    "title": "Singularity-free fixed-time adaptive event-triggered fault-tolerant control for a QUAV with user-defined tracking performance",
+    "year": 2025,
+    "authors": "Song, Xiaona; Zhuo, Ruikang; Song, Shuai",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129024",
+    "title": "Attack-compensated asynchronous output feedback control for stochastic switching systems with sojourn probability",
+    "year": 2025,
+    "authors": "Mei, Xu; Cheng, Jun; Huang, Wentao",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129233",
+    "title": "Numerical approximations and convergence analysis of piecewise diffusion Markov processes, with application to glioma cell migration",
+    "year": 2025,
+    "authors": "Buckwar, Evelyn; Meddah, Amira",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129602",
+    "title": "An enhanced wavelet-based numerical scheme with higher convergence order for a class of high-order boundary value problems",
+    "year": 2025,
+    "authors": "Zhang, Ruimin; Yang, Lei; Zhu, Hui",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129122",
+    "title": "Convergence analysis of collocation solutions for delay Volterra integral equations with weakly singular kernels",
+    "year": 2025,
+    "authors": "Peyrovan, P.; Tari, A.; Brunner, H.",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129450",
+    "title": "Convergence analysis of a Nystr\u00f6m-type method for a class of nonlinear integral equations with highly oscillatory kernels",
+    "year": 2025,
+    "authors": "Kassid, Qusay Abdulraheem; Sohrabi, Saeed; Ranjbar, Hamid",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129496",
+    "title": "Analysis of stability, energy conservation, and convergence of coupled advection-diffusion models for ocean-atmosphere interactions",
+    "year": 2025,
+    "authors": "Munir, Taj; Chen, Hongchu; Kang, Can",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129095",
+    "title": "On the local convergence of a smoothing structured secant method for nonlinear complementarity",
+    "year": 2025,
+    "authors": "P\u00e9rez, R.; S\u00e1nchez, W.; Mart\u00ednez, H.J.",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129478",
+    "title": "Convergence rate of nonlinear delayed neutral McKean-Vlasov SDEs driven by fractional Brownian motions",
+    "year": 2025,
+    "authors": "Wang, Shengrong; Xie, Jie; Tan, Li",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129395",
+    "title": "Convergence and stability in mean square of the stochastic \u03b8-methods for systems of NSDDEs under a coupled monotonicity condition",
+    "year": 2025,
+    "authors": "Niu, Mengyao; Niu, Yuanling; Wei, Jiaxin",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129358",
+    "title": "Convergence of mass transfer particle tracking schemes for the simulation of advection-diffusion-reaction equations",
+    "year": 2025,
+    "authors": "Pankavich, Stephen; Schauer, Lucas; Schmidt, Michael J.",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129206",
+    "title": "Fast algorithms and analysis of oscillatory and weakly singular generalized Bessel transforms",
+    "year": 2025,
+    "authors": "Kang, Hongchao; Xiang, Chunzhi; Liu, Guidong",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129317",
+    "title": "OP-HHO based feature selection improves the performance of depression classification framework: A gender biased multiband research",
+    "year": 2025,
+    "authors": "Li, Kun; Zhong, PeiYun; Dong, Li",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129557",
+    "title": "A piecewise gradient prior for small structures and contrast preserving image smoothing",
+    "year": 2025,
+    "authors": "Li, Tingting; Li, Fang; Qi, Huiqing",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129030",
+    "title": "Modelling the prevalence of prostitution under the influence of poverty: A deterministic vs. stochastic approach",
+    "year": 2025,
+    "authors": "Divya, G.; Athithan, S.; Ghosh, Mini",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.129123",
+    "title": "Coupled nonlinear stochastic integral equations in the general form of the predator-prey model",
+    "year": 2025,
+    "authors": "Tamimi, Hengameh; Ghaemi, Mohammad Bagher; Saadati, Reza",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129599",
+    "title": "A unified model of SABR and mean-reverting stochastic volatility for derivative pricing",
+    "year": 2025,
+    "authors": "Choi, Sun-Yong; Kim, Jeong-Hoon",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129445",
+    "title": "Quasi-synchronization of stochastic delayed multi-agent systems via gain-waving irregular intermittent control with its application in circuits",
+    "year": 2025,
+    "authors": "Li, Hanfei; Sun, Jiankun; Pan, Dong",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129471",
+    "title": "On the hybridizable discontinuous Galerkin method and superconvergence analysis for the diffusive viscous wave equation",
+    "year": 2025,
+    "authors": "Wang, Lu; Feng, Minfu",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2025.129394",
+    "title": "Observer-based security control for nonlinear networked systems: The SCP model of semi-Markov kernel approach",
+    "year": 2025,
+    "authors": "Xia, Pei-Zhen; Chang, Xiao-Heng",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2023.128461",
+    "title": "Nonlocal strain gradient-based isogeometric analysis of graphene platelets-reinforced functionally graded triply periodic minimal surface nanoplates",
+    "year": 2024,
+    "authors": "Nguyen, Nam V.; Tran, Kim Q.; Lee, Jaehong",
+    "cited_by": 18,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128549",
+    "title": "Neural network compensator-based robust iterative learning control scheme for mobile robots nonlinear systems with disturbances and uncertain parameters",
+    "year": 2024,
+    "authors": "Chen, Zhengquan; Hou, Yandong; Huang, Ruirui",
+    "cited_by": 11,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128543",
+    "title": "Effect of vaccine efficacy on vaccination behavior with adaptive perception",
+    "year": 2024,
+    "authors": "Wang, Jingrui; Zhang, Huizhen; An, Tianbo",
+    "cited_by": 10,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128555",
+    "title": "A comparative study of discretization techniques for augmented Urysohn type nonlinear functional Volterra integral equations and their convergence analysis",
+    "year": 2024,
+    "authors": "Bhat, Imtiyaz Ahmad; Mishra, Lakshmi Narayan",
+    "cited_by": 10,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128709",
+    "title": "The evolutionary game of emotions considering the influence of reputation",
+    "year": 2024,
+    "authors": "Bai, Xi; Ye, Ye; Chen, Tong",
+    "cited_by": 9,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128534",
+    "title": "Enhancing cooperative evolution in spatial public goods game by particle swarm optimization based on exploration and q-learning",
+    "year": 2024,
+    "authors": "Wang, Xianjia; Yang, Zhipeng; Chen, Guici",
+    "cited_by": 8,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2023.128402",
+    "title": "Region stability analysis and precise tracking control of linear stochastic systems",
+    "year": 2024,
+    "authors": "Zhang, Huasheng; Dai, Yuzhen; Zhu, Chenglong",
+    "cited_by": 8,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2023.128363",
+    "title": "Shifting asymmetric time-varying BLF-based model-free hybrid force/position control for 3-DOF SEA-based manipulator with random initial error",
+    "year": 2024,
+    "authors": "Wei, Yangchun; Wang, Haoping; Tian, Yang",
+    "cited_by": 6,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128881",
+    "title": "Robust H\u221e sliding mode control for delay-dependent uncertain T-S fuzzy descriptor stochastic Markovian jump systems with mode-dependent time-varying delays",
+    "year": 2024,
+    "authors": "Chen, Yi; Zhou, Juan",
+    "cited_by": 6,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128552",
+    "title": "Trajectory tracking control of a manipulator based on an immune algorithm-optimized neural network in the presence of unknown backlash-like hysteresis",
+    "year": 2024,
+    "authors": "Chen, Jiqing; Zhang, Haiyan; Zhu, Tongtong",
+    "cited_by": 6,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128666",
+    "title": "Adaptive tracking control for constrained nonlinear nonstrict-feedback switched stochastic systems with unknown control directions",
+    "year": 2024,
+    "authors": "Liu, Yanli; Hao, Li-Ying",
+    "cited_by": 5,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2023.128503",
+    "title": "Convergence of a exponential tamed method for a general interest rate model",
+    "year": 2024,
+    "authors": "Lord, Gabriel; Wang, Mengchao",
+    "cited_by": 5,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128712",
+    "title": "Distributed dual consensus algorithm for time-varying optimization with coupled equality constraint",
+    "year": 2024,
+    "authors": "Yue, Yuanyuan; Liu, Qingshan",
+    "cited_by": 4,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128928",
+    "title": "Adaptive trajectories sampling for solving PDEs with deep learning methods",
+    "year": 2024,
+    "authors": "Chen, Xingyu; Cen, Jianhuan; Zou, Qingsong",
+    "cited_by": 4,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2023.128526",
+    "title": "On the exact and population bi-dimensional reproduction numbers in a stochastic SVIR model with imperfect vaccine",
+    "year": 2024,
+    "authors": "Gamboa, M.; L\u00f3pez-Garc\u00eda, M.; Lopez-Herrero, M.J.",
+    "cited_by": 4,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128697",
+    "title": "Stationary distribution of a double epidemic stochastic model driven by saturated incidence rates",
+    "year": 2024,
+    "authors": "Selvan, T. Tamil; Kumar, M.",
+    "cited_by": 4,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128800",
+    "title": "Lagrange stability and passivity in the mean square sense of discrete-time stochastic Markovian switched neural networks with time-varying mixed delays",
+    "year": 2024,
+    "authors": "Yang, Liu; Ma, Weijun; Wang, Xin",
+    "cited_by": 4,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2023.128488",
+    "title": "Strong backward error analysis of symplectic integrators for stochastic Hamiltonian systems",
+    "year": 2024,
+    "authors": "D'Ambrosio, Raffaele; Di Giovacchino, Stefano",
+    "cited_by": 4,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128873",
+    "title": "Generalized polynomial chaos expansions for the random fractional Bateman equations",
+    "year": 2024,
+    "authors": "Jornet, Marc",
+    "cited_by": 4,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128990",
+    "title": "The effect of nonlinear environmental feedback on the outcomes of evolutionary dynamics",
+    "year": 2024,
+    "authors": "Huang, Jiaquan; Zhu, Yuying; Xia, Chengyi",
+    "cited_by": 3,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128535",
+    "title": "Adaptive rock-paper-scissors game enhances eco-evolutionary performance at cost of dynamic stability",
+    "year": 2024,
+    "authors": "Kubyana, Mmatlou S.; Landi, Pietro; Hui, Cang",
+    "cited_by": 3,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128653",
+    "title": "Event-based asynchronous state estimation for Markov jump memristive neural networks",
+    "year": 2024,
+    "authors": "Tang, Tianfeng; Qin, Gang; Zhang, Bin",
+    "cited_by": 3,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128725",
+    "title": "Output-mask-based adaptive NN control for stochastic time-delayed multi-agent systems with a unified event-triggered approach",
+    "year": 2024,
+    "authors": "Guo, Xiyue; Zhang, Huaguang; Liu, Xin",
+    "cited_by": 3,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2023.128413",
+    "title": "Heterogeneity of delay information and revenue-cost structure in a multi-server queue with threshold policy: Customer behaviors and optimization",
+    "year": 2024,
+    "authors": "Sun, Wei; Zhang, Zhiyuan; Xie, Xumeng",
+    "cited_by": 3,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128675",
+    "title": "Orthotope-search-expansion-based extended zonotopic Kalman filter design for a discrete-time linear parameter-varying system with a dual-noise term",
+    "year": 2024,
+    "authors": "Wang, Ziyun; Wang, Xianzhe; Wang, Yan",
+    "cited_by": 3,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128890",
+    "title": "An adaptive energy-based sequential method for training PINNs to solve gradient flow equations",
+    "year": 2024,
+    "authors": "Guo, Jia; Wang, Haifeng; Hou, Chenping",
+    "cited_by": 3,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2023.128322",
+    "title": "One or two frequencies? The Iterative Filtering answers",
+    "year": 2024,
+    "authors": "Cicone, Antonio; Serra-Capizzano, Stefano; Zhou, Haomin",
+    "cited_by": 3,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128720",
+    "title": "Double weakly singular kernels in stochastic Volterra integral equations with application to the rough Heston model",
+    "year": 2024,
+    "authors": "Farkhondeh Rouz, O.; Shahmorad, S.; Ahmadian, D.",
+    "cited_by": 2,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128638",
+    "title": "Matrix norm based hybrid Shapley and iterative methods for the solution of stochastic matrix games",
+    "year": 2024,
+    "authors": "\u0130zgi, Burhaneddin; \u00d6zkaya, Murat; \u00dcre, Naz\u0131m Kemal",
+    "cited_by": 2,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2023.128375",
+    "title": "Reduced basis stochastic Galerkin methods for partial differential equations with random inputs",
+    "year": 2024,
+    "authors": "Wang, Guanjie; Liao, Qifeng",
+    "cited_by": 2,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128746",
+    "title": "Stability of switched neutral stochastic functional systems with different structures under high nonlinearity",
+    "year": 2024,
+    "authors": "Lu, Boliang; Zhu, Quanxin",
+    "cited_by": 2,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128799",
+    "title": "Convergence analysis of an iterative scheme to solve a family of functional Volterra integral equations",
+    "year": 2024,
+    "authors": "Zare, Farideh; Heydari, Mohammad; Loghmani, Ghasem Barid",
+    "cited_by": 2,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128605",
+    "title": "Convergence rates for critical point regularization",
+    "year": 2024,
+    "authors": "Obmann, Daniel; Haltmeier, Markus",
+    "cited_by": 2,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128708",
+    "title": "An efficient algorithm for Fantope-constrained sparse principal subspace estimation problem",
+    "year": 2024,
+    "authors": "Liu, Yong-Jin; Wan, Yuqi; Lin, Lanyu",
+    "cited_by": 2,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128590",
+    "title": "Effect of Gaussian gradient in the medium's action potential morphology on spiral waves",
+    "year": 2024,
+    "authors": "Rajagopal, Karthikeyan; Nezhad Hajian, Dorsa; Natiq, Hayder",
+    "cited_by": 2,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128957",
+    "title": "Fixation of cooperation in evolutionary games with environmental feedbacks",
+    "year": 2024,
+    "authors": "Lv, Shaojie; Li, Jiaying; Zhao, Changheng",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128749",
+    "title": "Evolutionary game dynamics and the phase portrait diversity in a pandemic scenario",
+    "year": 2024,
+    "authors": "Mendon\u00e7a, J.P.; Brum, Arthur A.; Lyra, M.L.",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128677",
+    "title": "Particle swarm intelligence promotes cooperation by adapting interaction radii in co-evolutionary games",
+    "year": 2024,
+    "authors": "Tian, Yue; Gao, Shun; Li, Haihong",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2023.128486",
+    "title": "Information-driven cooperation on adaptive cyber-physical systems",
+    "year": 2024,
+    "authors": "Yang, Guoli; Wu, Yu'e; Cavaliere, Matteo",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128585",
+    "title": "Estimator-based adaptive prescribed performance cooperative bipartite containment control of nonlinear multiagent system against DoS attacks",
+    "year": 2024,
+    "authors": "Guo, Ming-Juan; Li, Yuan-Xin",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128766",
+    "title": "Understanding the dynamics of hepatitis B transmission: A stochastic model with vaccination and Ornstein-Uhlenbeck process",
+    "year": 2024,
+    "authors": "Wu, Shuying; Yuan, Sanling; Lan, Guijie",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2023.128422",
+    "title": "Embedding phase reduction for fast-slow systems with noise-induced stochastic quasiperiodic orbits",
+    "year": 2024,
+    "authors": "Zhu, Jinjie",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128823",
+    "title": "A search algorithm for the compact uncertainty region of system elements with interval and affine constraint properties",
+    "year": 2024,
+    "authors": "Sub Lee, Ho; Park, Chan-eun; Park, PooGyeon",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128973",
+    "title": "The evolution of cooperation and global synchronization in the evolutionary Kuramoto dilemma combined with the prisoner's dilemma",
+    "year": 2024,
+    "authors": "Luo, Yijun; Huang, Changwei; Han, Wenchen",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128627",
+    "title": "Conjugate gradient-type method for the tensor linear system via the T-product and its application in the calculation of Moore-Penrose inverse",
+    "year": 2024,
+    "authors": "Huang, Baohua",
+    "cited_by": 1,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128926",
+    "title": "Risk-sensitive benchmarked portfolio optimization under non-linear market dynamics",
+    "year": 2024,
+    "authors": "Shankar, Ravi; Goel, Mayank",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128713",
+    "title": "Numerical inverse transformation of double sided Laplace transform with parameter optimization",
+    "year": 2024,
+    "authors": "M\u00e9sz\u00e1ros, Andr\u00e1s; Telek, Mikl\u00f3s",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128547",
+    "title": "Corrigendum to \u201cComputational simulation of surface tension and gravitation-induced convective flow of a nanoliquid with cross-diffusion: An optimization procedure\u201d [applied mathematics and computation 425 (2022) 127108]",
+    "year": 2024,
+    "authors": "Mackolil, Joby; Mahanthesh, B.",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128644",
+    "title": "Stabilization of continuous-time Markovian jump systems: A mode separation but optimization method",
+    "year": 2024,
+    "authors": "Wang, Guoliang; Zhu, Zhikang; Zhang, Yande",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2023.128341",
+    "title": "Preconditioners based on matrix splitting for the structured systems from elliptic PDE-constrained optimization problems",
+    "year": 2024,
+    "authors": "Fan, Hongtao; Li, Yajing; Zhang, Hongbing",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128611",
+    "title": "Dividend based risk measures: A Markov chain approach",
+    "year": 2024,
+    "authors": "D'Amico, Guglielmo; De Blasis, Riccardo",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2023.128481",
+    "title": "Inequalities for fractional integral with the use of stochastic orderings",
+    "year": 2024,
+    "authors": "Epebinu, Abayomi Dennis; Szostok, Tomasz",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128834",
+    "title": "Decentralized control of forward and backward stochastic difference system with nested asymmetric information",
+    "year": 2024,
+    "authors": "Zhang, Shen; Xu, Juanjuan; Zhang, Huanshui",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128570",
+    "title": "Construction and mean-square stability analysis of a new family of stochastic Runge-Kutta methods",
+    "year": 2024,
+    "authors": "Rahimi, Vaz'he; Ahmadian, Davood; Ballestra, Luca Vincenzo",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128803",
+    "title": "Stochastic adaptive linear quadratic nonzero-sum differential games",
+    "year": 2024,
+    "authors": "Tian, Xiu-Qin; Liu, Shu-Jun; Yang, Xue",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2023.128499",
+    "title": "Analysis on a high accuracy fully implicit solution for strong nonlinear diffusion problem - convergence, stability, and uniqueness",
+    "year": 2024,
+    "authors": "Gong, Yujie; Yuan, Guangwei; Cui, Xia",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128921",
+    "title": "Structure preserving algorithms with adaptive time step for Birkhoffian systems",
+    "year": 2024,
+    "authors": "Kong, Xinlei; Song, Yinjie; Wu, Huibin",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128930",
+    "title": "Gradient neural network model for the system of two linear matrix equations and applications",
+    "year": 2024,
+    "authors": "Daki\u0107, Jelena; Petkovi\u0107, Marko D.",
+    "cited_by": 0,
+    "abstract": ""
+  },
+  {
+    "doi": "10.1016/j.amc.2024.128626",
+    "title": "A new iterative method for simultaneous computation of several eigenpair derivatives of a large matrix",
+    "year": 2024,
+    "authors": "Xie, Huiqing; Lu, Manhong",
+    "cited_by": 0,
+    "abstract": ""
+  }
+]
