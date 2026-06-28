@@ -1,0 +1,397 @@
+{
+  "issn": "0096-3003",
+  "total_unique": 251,
+  "strictly_filtered": 30,
+  "all_records": [
+    {
+      "doi": "10.1016/j.amc.2020.125535",
+      "title": "A novel metaheuristic optimizer inspired by behavior of jellyfish in ocean",
+      "container": "Applied Mathematics and Computation",
+      "year": 2021,
+      "authors": "Chou, Jui-Sheng; Truong, Dinh-Nhat",
+      "cited_by": 358,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "aquila optimizer"
+    },
+    {
+      "doi": "10.1016/j.amc.2019.124872",
+      "title": "A multi-strategy enhanced sine cosine algorithm for global optimization and constrained practical engineering problems",
+      "container": "Applied Mathematics and Computation",
+      "year": 2020,
+      "authors": "Chen, Huiling; Wang, Mingjing; Zhao, Xuehua",
+      "cited_by": 107,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "sine cosine algorithm"
+    },
+    {
+      "doi": "10.1016/j.amc.2021.126663",
+      "title": "Partially-coupled nonlinear parameter optimization algorithm for a class of multivariate hybrid models",
+      "container": "Applied Mathematics and Computation",
+      "year": 2022,
+      "authors": "Zhou, Yihong; Zhang, Xiao; Ding, Feng",
+      "cited_by": 79,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "chaotic optimization algorithm"
+    },
+    {
+      "doi": "10.1016/j.amc.2020.125153",
+      "title": "Cryptanalysis and constructing S-Box based on chaotic map and backtracking",
+      "container": "Applied Mathematics and Computation",
+      "year": 2020,
+      "authors": "Liu, Hongjun; Kadir, Abdurahman; Xu, Chengbo",
+      "cited_by": 65,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "chaotic optimization algorithm"
+    },
+    {
+      "doi": "10.1016/j.amc.2021.126586",
+      "title": "Particle swarm intelligence and the evolution of cooperation in the spatial public goods game with punishment",
+      "container": "Applied Mathematics and Computation",
+      "year": 2022,
+      "authors": "Lv, Shaojie; Song, Feifei",
+      "cited_by": 29,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "tunicate swarm"
+    },
+    {
+      "doi": "10.1016/j.amc.2020.125464",
+      "title": "Numerical schemes and genetic algorithms for the optimal control of a continuous model of supply chains",
+      "container": "Applied Mathematics and Computation",
+      "year": 2021,
+      "authors": "Rarit\u00e0, Luigi; Stamova, Ivanka; Tomasiello, Stefania",
+      "cited_by": 23,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "ant colony continuous"
+    },
+    {
+      "doi": "10.1016/j.amc.2019.124998",
+      "title": "Energy flow-guided synchronization between chaotic circuits",
+      "container": "Applied Mathematics and Computation",
+      "year": 2020,
+      "authors": "Yao, Zhao; Zhou, Ping; Alsaedi, Ahmed; Ma, Jun",
+      "cited_by": 23,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "chaotic optimization algorithm"
+    },
+    {
+      "doi": "10.1016/j.amc.2020.125831",
+      "title": "Optimization of the Kaplan-Yorke dimension in fractional-order chaotic oscillators by metaheuristics",
+      "container": "Applied Mathematics and Computation",
+      "year": 2021,
+      "authors": "Silva-Ju\u00e1rez, Alejandro; Tlelo-Cuautle, Esteban; de la Fraga, Luis Gerardo; Li, Rui",
+      "cited_by": 22,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "chaotic optimization algorithm"
+    },
+    {
+      "doi": "10.1016/j.amc.2021.126726",
+      "title": "A constrained consensus based optimization algorithm and its application to finance",
+      "container": "Applied Mathematics and Computation",
+      "year": 2022,
+      "authors": "Bae, Hyeong-Ohk; Ha, Seung-Yeal; Kang, Myeongju; Lim, Hyuncheul",
+      "cited_by": 16,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "population based optimization"
+    },
+    {
+      "doi": "10.1016/j.amc.2020.125858",
+      "title": "A Lyapunov-based direct adaptive controller for the suppression and synchronization of a perturbed nuclear spin generator chaotic system",
+      "container": "Applied Mathematics and Computation",
+      "year": 2021,
+      "authors": "Ahmad, Israr",
+      "cited_by": 14,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "chaotic optimization algorithm"
+    },
+    {
+      "doi": "10.1016/j.amc.2024.128618",
+      "title": "An evolutionary game with reputation-based imitation-mutation dynamics",
+      "container": "Applied Mathematics and Computation",
+      "year": 2024,
+      "authors": "Feng, Kehuan; Han, Songlin; Feng, Minyu; Szolnoki, Attila",
+      "cited_by": 12,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "mutation strategy evolutionary"
+    },
+    {
+      "doi": "10.1016/j.amc.2020.125642",
+      "title": "Non parameter-filled function for global optimization",
+      "container": "Applied Mathematics and Computation",
+      "year": 2021,
+      "authors": "Pandiya, Ridwan; Widodo, Widodo; Salmah, ; Endrayanto, Irwan",
+      "cited_by": 12,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "zebra optimization"
+    },
+    {
+      "doi": "10.1016/j.amc.2020.125665",
+      "title": "Identification of fractional water transport model with \u03c8-Caputo derivatives using particle swarm optimization algorithm",
+      "container": "Applied Mathematics and Computation",
+      "year": 2021,
+      "authors": "Bohaienko, Vsevolod; Gladky, Anatolij; Romashchenko, Mykhailo; Matiash, Tetiana",
+      "cited_by": 11,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "tunicate swarm"
+    },
+    {
+      "doi": "10.1016/j.amc.2019.125004",
+      "title": "Two modified DY conjugate gradient methods for unconstrained optimization problems",
+      "container": "Applied Mathematics and Computation",
+      "year": 2020,
+      "authors": "Zhu, Zhibin; Zhang, Dongdong; Wang, Shuo",
+      "cited_by": 11,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "zebra optimization"
+    },
+    {
+      "doi": "10.1016/j.amc.2021.126788",
+      "title": "Bit cyclic shift method to reinforce digital chaotic maps and its application in pseudorandom number generator",
+      "container": "Applied Mathematics and Computation",
+      "year": 2022,
+      "authors": "Zheng, Jun; Hu, Hanping",
+      "cited_by": 9,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "chaotic optimization algorithm"
+    },
+    {
+      "doi": "10.1016/j.amc.2024.128534",
+      "title": "Enhancing cooperative evolution in spatial public goods game by particle swarm optimization based on exploration and q-learning",
+      "container": "Applied Mathematics and Computation",
+      "year": 2024,
+      "authors": "Wang, Xianjia; Yang, Zhipeng; Chen, Guici; Liu, Yanli",
+      "cited_by": 8,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "tunicate swarm"
+    },
+    {
+      "doi": "10.1016/j.amc.2023.127940",
+      "title": "Investigation of chaotic resonance in Type-I and Type-II Morris-Lecar neurons",
+      "container": "Applied Mathematics and Computation",
+      "year": 2023,
+      "authors": "Baysal, Veli; Solmaz, Ramazan; Ma, Jun",
+      "cited_by": 8,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "chaotic optimization algorithm"
+    },
+    {
+      "doi": "10.1016/j.amc.2020.125596",
+      "title": "On MATLAB experience in accelerating DIRECT-GLce algorithm for constrained global optimization through dynamic data structures and parallelization",
+      "container": "Applied Mathematics and Computation",
+      "year": 2021,
+      "authors": "Stripinis, Linas; \u017dilinskas, Julius; Casado, Leocadio G.; Paulavi\u010dius, Remigijus",
+      "cited_by": 8,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "stochastic global optimization"
+    },
+    {
+      "doi": "10.1016/j.amc.2022.127821",
+      "title": "Weakly nonlinear stability analysis and study of chaotic Darcy-Benard convection of a combusting fluid",
+      "container": "Applied Mathematics and Computation",
+      "year": 2023,
+      "authors": "Siddheshwar, P.G.; Kanchana, C.; Laroze, D.",
+      "cited_by": 7,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "chaotic optimization algorithm"
+    },
+    {
+      "doi": "10.1016/j.amc.2021.126540",
+      "title": "Chaotic Signal Induced Delay Decay in Hodgkin-Huxley Neuron",
+      "container": "Applied Mathematics and Computation",
+      "year": 2021,
+      "authors": "Baysal, Veli; Y\u0131lmaz, Ergin",
+      "cited_by": 6,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "chaotic optimization algorithm"
+    },
+    {
+      "doi": "10.1016/j.amc.2022.127053",
+      "title": "On the dynamics of fractional q-deformation chaotic map",
+      "container": "Applied Mathematics and Computation",
+      "year": 2022,
+      "authors": "Ran, Jie; Li, Yu-Qin; Xiong, Yi-Bin",
+      "cited_by": 4,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "chaotic optimization algorithm"
+    },
+    {
+      "doi": "10.1016/j.amc.2022.126994",
+      "title": "Regional sampled-data synchronization of chaotic neural networks using piecewise-continuous delay dependent Lyapunov functional",
+      "container": "Applied Mathematics and Computation",
+      "year": 2022,
+      "authors": "Han, S.Y.; Kommuri, S.K.; Kwon, O.M.; Lee, S.M.",
+      "cited_by": 4,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "ant colony continuous"
+    },
+    {
+      "doi": "10.1016/j.amc.2024.129152",
+      "title": "A weighted switching sequence optimization algorithm for static output feedback control synthesis of nonlinear systems",
+      "container": "Applied Mathematics and Computation",
+      "year": 2025,
+      "authors": "Gao, Jingjing; Xie, Xiangpeng",
+      "cited_by": 2,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "chaotic optimization algorithm"
+    },
+    {
+      "doi": "10.1016/j.amc.2022.127393",
+      "title": "Extinction, persistence and density function analysis of a stochastic two-strain disease model with drug resistance mutation",
+      "container": "Applied Mathematics and Computation",
+      "year": 2022,
+      "authors": "Liu, Yue",
+      "cited_by": 2,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "mutation strategy evolutionary"
+    },
+    {
+      "doi": "10.1016/j.amc.2020.125470",
+      "title": "Preconditioning for PDE-constrained optimization with total variation regularization",
+      "container": "Applied Mathematics and Computation",
+      "year": 2020,
+      "authors": "Li, Hongyi; Wang, Chaojie; Zhao, Di",
+      "cited_by": 2,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "zebra optimization"
+    },
+    {
+      "doi": "10.1016/j.amc.2024.128677",
+      "title": "Particle swarm intelligence promotes cooperation by adapting interaction radii in co-evolutionary games",
+      "container": "Applied Mathematics and Computation",
+      "year": 2024,
+      "authors": "Tian, Yue; Gao, Shun; Li, Haihong; Dai, Qionglin",
+      "cited_by": 1,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "tunicate swarm"
+    },
+    {
+      "doi": "10.1016/j.amc.2019.124861",
+      "title": "A subspace version of the Wang\u2013Yuan Augmented Lagrangian-Trust Region method for equality constrained optimization",
+      "container": "Applied Mathematics and Computation",
+      "year": 2020,
+      "authors": "Costa, Carina Moreira; Grapiglia, Geovani Nunes",
+      "cited_by": 1,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "global optimization method"
+    },
+    {
+      "doi": "10.1016/j.amc.2026.130091",
+      "title": "A Lyapunov-based novel fixed-time control scheme for chaotic systems synchronization",
+      "container": "Applied Mathematics and Computation",
+      "year": 2026,
+      "authors": "Shafiq, Muhammad; Ahmad, Israr",
+      "cited_by": 0,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "chaotic optimization algorithm"
+    },
+    {
+      "doi": "10.1016/j.amc.2023.128341",
+      "title": "Preconditioners based on matrix splitting for the structured systems from elliptic PDE-constrained optimization problems",
+      "container": "Applied Mathematics and Computation",
+      "year": 2024,
+      "authors": "Fan, Hongtao; Li, Yajing; Zhang, Hongbing; Zhu, Xinyun",
+      "cited_by": 0,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "population based optimization"
+    },
+    {
+      "doi": "10.1016/j.amc.2021.126778",
+      "title": "Approximations of kinetic equations of swarm formation: Convergence and exact solutions",
+      "container": "Applied Mathematics and Computation",
+      "year": 2022,
+      "authors": "Lachowicz, Miros\u0142aw; Leszczy\u0144ski, Henryk; Topolski, Krzysztof A.",
+      "cited_by": 0,
+      "issns": [
+        "0096-3003"
+      ],
+      "abstract": "",
+      "query_matched": "tunicate swarm"
+    }
+  ]
+}
