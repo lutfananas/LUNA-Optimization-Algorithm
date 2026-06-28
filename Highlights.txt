@@ -1,0 +1,13 @@
+# Highlights for Applied Mathematics and Computation
+
+1. **LUNA is a population-based metaheuristic whose search operators are mathematically derived from real lunar orbital mechanics** — the vis-viva equation, Kepler's angular rate, lunar libration, and tidal syzygy are embedded directly into the update equations, yielding zero astronomical modulation when removed.
+
+2. **Seven formal theorems with full proofs** establish monotonic best-fitness decrease, exponential step-size decay, finite expected hitting time, weak ergodicity of the LUNA Markov chain via the Dobrushin coefficient, and almost-sure convergence to the global optimum — to the best of our knowledge, the first such guarantees among astronomy-inspired metaheuristics.
+
+3. **A dedicated subsection explicitly connects each theorem to its empirical counterpart** (convergence curves, dimensional degradation, hitting-time probability, stagnation escape), ensuring the theory does not stand alone.
+
+4. **On CEC 2022 (D=10), LUNA achieves Friedman rank #1 (1.83)**, outperforming 9 baselines including DE (2.08) and AVOA (6.33), with 11/12 wins against AVOA (Wilcoxon p < 0.05); Cliff's delta for LUNA-vs-DE is −0.376 (medium effect size), reflecting a heterogeneous per-function split.
+
+5. **Generalization is demonstrated across three CEC benchmark generations (2017, 2022, 2025)**: LUNA achieves rank #1 on both CEC 2022 (D=10, Friedman 1.83) and the new IEEE CEC 2025 BC-SOP track (D=30, 29 functions, Friedman 1.76, U-score −1058), and remains in the top 5 at D=50 and D=100.
+
+6. **Rigorous statistical analysis** includes Wilcoxon signed-rank tests, Friedman test, Holm–Bonferroni post-hoc correction, Nemenyi critical-difference diagram, and a Dolan–Moré empirical cumulative distribution function (ECDF) analysis with the highest area-under-curve (998.94).

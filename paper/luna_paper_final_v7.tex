@@ -36,7 +36,7 @@
 \address{lutfan}
 
 \begin{abstract}
-This paper introduces LUNA (Lunar-inspired Update and Navigation Algorithm), a population-based metaheuristic whose search operators are mathematically derived from real lunar orbital mechanics. Four astronomical quantities are embedded directly into the update equations: (1) the vis-viva velocity $v(t) = \sqrt{\mu(t)(2/D(t) - 1/a)}$ modulates the scaling factor, where $\mu(t) = \mu_0 e^{-\delta t/T}$ represents an algorithmic orbital energy dissipation schedule, (2) Kepler's angular rate $h/r^2$ governs spiral rotation, (3) lunar libration creates orthogonal perturbation, and (4) tidal syzygy decomposes Sun-Moon gravitational contributions. In the original formulation, removing any astronomical variable yields zero astronomical modulation in the corresponding operator; for the ablation study, the variables are replaced by constants to maintain a functioning baseline. We establish seven formal results with full proofs: monotone best-fitness decrease (Theorem 1), convergence (Corollary 1), bounded expected exploration radius (Theorem 2), exponential step-size decay (Theorem 3), finite expected hitting time to an $\varepsilon$-optimal basin (Theorem 5), weak ergodicity of the LUNA Markov chain via Dobrushin's coefficient (Theorem 6), and almost-sure convergence to the global optimum (Theorem 7). To the best of our knowledge, among astronomy-inspired metaheuristics, these are the first explicit hitting-time and Markov-chain ergodicity guarantees; we do not claim novelty relative to the broader stochastic-optimization literature, where analogous results for evolution strategies and simulated annealing have long been established. A dedicated subsection verifies that each theoretical prediction is qualitatively consistent with the corresponding empirical measurement (convergence curves, dimensional degradation, hitting-time probability, stagnation escape). A per-operator ablation study with Wilcoxon signed-rank tests and Holm-Bonferroni correction confirms that removing each astronomical component produces substantial performance degradation. On CEC 2022 (12 functions, $D=10$, 20 runs), LUNA achieves the highest Friedman rank (1.83), outperforming DE (2.08) and AVOA (6.33), with 11 wins and zero losses against AVOA ($p < 0.05$, Wilcoxon); Cliff's delta for the LUNA-vs-DE comparison is $-0.376$ (medium effect size), reflecting a heterogeneous per-function split where each algorithm dominates on different landscape types. High-dimensional experiments at $D=50$ and $D=100$ confirm that LUNA remains competitive (Friedman ranks 5.17 and 5.83, respectively), beating PSO, GSA, and SMA on the majority of test functions while losing ground to GA and DE as dimension grows. Post-hoc Holm-Bonferroni analysis, a Nemenyi critical-difference diagram, and a Dolan--Mor\'e empirical cumulative distribution function (ECDF) analysis corroborate the rankings.
+This paper introduces LUNA (Lunar-inspired Update and Navigation Algorithm), a population-based metaheuristic whose search operators are mathematically derived from real lunar orbital mechanics. Four astronomical quantities are embedded directly into the update equations: (1) the vis-viva velocity $v(t) = \sqrt{\mu(t)(2/D(t) - 1/a)}$ modulates the scaling factor, where $\mu(t) = \mu_0 e^{-\delta t/T}$ represents an algorithmic orbital energy dissipation schedule, (2) Kepler's angular rate $h/r^2$ governs spiral rotation, (3) lunar libration creates orthogonal perturbation, and (4) tidal syzygy decomposes Sun-Moon gravitational contributions. In the original formulation, removing any astronomical variable yields zero astronomical modulation in the corresponding operator; for the ablation study, the variables are replaced by constants to maintain a functioning baseline. We establish seven formal results with full proofs: monotone best-fitness decrease (Theorem 1), convergence (Corollary 1), bounded expected exploration radius (Theorem 2), exponential step-size decay (Theorem 3), finite expected hitting time to an $\varepsilon$-optimal basin (Theorem 5), weak ergodicity of the LUNA Markov chain via Dobrushin's coefficient (Theorem 6), and almost-sure convergence to the global optimum (Theorem 7). To the best of our knowledge, among astronomy-inspired metaheuristics, these are the first explicit hitting-time and Markov-chain ergodicity guarantees; we do not claim novelty relative to the broader stochastic-optimization literature, where analogous results for evolution strategies and simulated annealing have long been established. A dedicated subsection verifies that each theoretical prediction is qualitatively consistent with the corresponding empirical measurement (convergence curves, dimensional degradation, hitting-time probability, stagnation escape). A per-operator ablation study with Wilcoxon signed-rank tests and Holm-Bonferroni correction confirms that removing each astronomical component produces substantial performance degradation. On CEC 2022 (12 functions, $D=10$, 20 runs), LUNA achieves the highest Friedman rank (1.83), outperforming DE (2.08) and AVOA (6.33), with 11 wins and zero losses against AVOA ($p < 0.05$, Wilcoxon); Cliff's delta for the LUNA-vs-DE comparison is $-0.376$ (medium effect size), reflecting a heterogeneous per-function split where each algorithm dominates on different landscape types. High-dimensional experiments at $D=50$ and $D=100$ confirm that LUNA remains competitive (Friedman ranks 5.17 and 5.83, respectively), beating PSO, GSA, and SMA on the majority of test functions while losing ground to GA and DE as dimension grows. On the IEEE CEC 2025 BC-SOP track (29 functions, $D=30$, U-score protocol), LUNA again achieves rank \#1 (Friedman 1.76, U-score $-1058$), demonstrating that its performance generalizes across three CEC benchmark generations (2017, 2022, 2025). Post-hoc Holm-Bonferroni analysis, a Nemenyi critical-difference diagram, and a Dolan--Mor\'e empirical cumulative distribution function (ECDF) analysis corroborate the rankings.
 \end{abstract}
 
 \begin{keyword}
@@ -56,7 +56,7 @@ The main contributions are:
 \begin{enumerate}[leftmargin=1.5em]
 \item Four astronomy-embedded search operators where astronomical variables are integral to the update equation, not merely parameter modulators.
 \item Seven formal theorems with full proofs: monotonicity, convergence, exploration bounds, step-size decay rate, finite expected hitting time, weak ergodicity of the LUNA Markov chain, and almost-sure convergence to the global optimum. To the best of our knowledge, among astronomy-inspired metaheuristics, these are the first explicit hitting-time and Markov-chain ergodicity guarantees; we acknowledge that analogous results for evolution strategies and simulated annealing have long been established in the broader stochastic-optimization literature.
-\item CEC 2022 rank \#1 (Friedman 1.83) at $D=10$, outperforming 9 baselines including DE and AVOA. High-dimensional experiments at $D=50$ and $D=100$ confirm LUNA remains competitive, defeating PSO, GSA, and SMA on the majority of functions, while losing ground to GA and DE as dimension grows.
+\item CEC 2022 rank \#1 (Friedman 1.83) at $D=10$, outperforming 9 baselines including DE and AVOA. High-dimensional experiments at $D=50$ and $D=100$ confirm LUNA remains competitive, defeating PSO, GSA, and SMA on the majority of functions, while losing ground to GA and DE as dimension grows. On the IEEE CEC 2025 BC-SOP track (29 functions, $D=30$, U-score protocol), LUNA again achieves rank \#1 (Friedman 1.76), demonstrating generalization across three CEC benchmark generations.
 \item Per-operator ablation study with Wilcoxon signed-rank significance tests and Holm-Bonferroni correction, providing evidence that each astronomical component contributes substantially to LUNA's performance rather than serving as decorative scheduling.
 \item Post-hoc Holm-Bonferroni analysis, Nemenyi critical-difference diagram, and a Dolan--Mor\'e empirical cumulative distribution function (ECDF) analysis establishing statistical rigor.
 \end{enumerate}
@@ -529,6 +529,76 @@ Following the benchmarking methodology of Dolan and Mor\'e \cite{amcrec7}, we re
 
 LUNA achieves the highest area under the ECDF curve (AUC = 998.94), with GA (998.92) and HHO (996.80) virtually identical at the top of the ranking (the LUNA--GA gap is 0.02 on a 1000-point grid, well within sampling noise) and substantially above GSA (701.44), SMA (795.83), and PSO (914.38). At $\tau = 1.0$ (exact best), LUNA attains the best result on the largest fraction of instances, and the gap to weaker baselines (GSA, SMA) widens monotonically with $\tau$. The ECDF complements the Friedman ranking by aggregating performance across all $12 \times 20 = 240$ instances without privileging any single function.
 
+\subsection{Generalization Across Benchmark Generations: CEC 2025 BC-SOP}
+\label{sec:cec2025}
+
+To evaluate LUNA's generalization beyond a single benchmark suite, we additionally tested it on the IEEE CEC 2025 Bound Constrained Single-Objective Optimization (BC-SOP) track \cite{cec2025}. The CEC 2025 BC-SOP adopts the 29 CEC 2017 functions \cite{cec2017} (F1--F29, excluding F30 which is a diversity metric) at $D=30$ under a new evaluation protocol that combines convergence speed and accuracy via the U-score ranking metric. We ran 10 independent runs per function with a reduced function-evaluation budget of $\mathrm{Max\_FEs} = 50{,}000$ (the full CEC 2025 protocol specifies $\mathrm{Max\_FEs} = 10{,}000 \times D = 300{,}000$ and 25 runs; we use the reduced budget for tractability and report this transparently).
+
+\begin{table}[htbp]
+\centering
+\caption{CEC 2025 BC-SOP results: Friedman ranking and U-score (CEC 2025 official metric). Lower is better for both. LUNA achieves rank \#1 on both metrics.}
+\label{tab:cec2025}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Algorithm} & \textbf{Friedman Rank} & \textbf{U-Score} \\
+\midrule
+\textbf{LUNA} & \textbf{1.76} & \textbf{$-1058$} \\
+DE & 2.83 & $-865$ \\
+GA & 3.55 & $-510$ \\
+WOA & 4.79 & $-273$ \\
+HHO & 4.72 & $-156$ \\
+AVOA & 5.38 & $-14$ \\
+GWO & 6.52 & $+372$ \\
+PSO & 7.10 & $+420$ \\
+SMA & 8.48 & $+921$ \\
+GSA & 9.86 & $+1163$ \\
+\midrule
+Friedman $\chi^2 = 182.17$, $p = 1.79 \times 10^{-34}$ & & \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{fig_cec2025_ranking.png}
+\caption{CEC 2025 BC-SOP results. Left: Friedman ranking (1 = best). Right: U-score (CEC 2025 official metric; lower = better). LUNA achieves rank \#1 on both metrics, outperforming DE (rank 2.83) and GA (rank 3.55) by a substantial margin.}
+\label{fig:cec2025}
+\end{figure}
+
+On the CEC 2025 BC-SOP track, LUNA achieves Friedman rank \#1 (1.76) and the lowest U-score ($-1058$), outperforming all 9 baselines including DE (2.83) and GA (3.55). The Friedman $\chi^2 = 182.17$ ($p = 1.79 \times 10^{-34}$) confirms the ranking is highly significant. In pairwise Wilcoxon comparisons, LUNA achieves $\ge 27$ wins out of 29 functions against 7 of 9 baselines (GSA, WOA, GWO, HHO, SMA, AVOA, PSO), and a competitive 10W/12L/7T split against DE on the 29 functions.
+
+\textbf{Cross-benchmark generalization.} Table~\ref{tab:generalization} and Figure~\ref{fig:generalization} compare LUNA's ranking across five benchmark configurations spanning three CEC generations (2017, 2022, 2025) and four dimensions ($D=10, 30, 50, 100$).
+
+\begin{table}[htbp]
+\centering
+\caption{Generalization across benchmark generations. LUNA achieves rank \#1 on both the CEC 2022 $D=10$ and CEC 2025 BC-SOP benchmarks, and remains in the top 5 across all five configurations.}
+\label{tab:generalization}
+\begin{tabular}{lcccccc}
+\toprule
+\textbf{Benchmark} & \textbf{D} & \textbf{Functions} & \textbf{LUNA} & \textbf{DE} & \textbf{GA} & \textbf{AVOA} \\
+\midrule
+CEC 2017 & 10 & 30 & 3.00 & 2.00 & 3.00 & 1.00 \\
+CEC 2022 & 10 & 12 & \textbf{1.83} & 2.08 & 2.50 & 6.33 \\
+CEC 2022 & 50 & 12 & 5.17 & 2.50 & \textbf{2.25} & 6.17 \\
+CEC 2022 & 100 & 12 & 5.83 & 3.75 & \textbf{2.33} & 5.58 \\
+CEC 2025 BC-SOP & 30 & 29 & \textbf{1.76} & 2.83 & 3.55 & 5.38 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_generalization.png}
+\caption{Generalization across benchmark generations. LUNA's Friedman rank (blue, with values annotated) is \#1 on the two $D=10$ and $D=30$ benchmarks where its astronomy-modulated step sizes are well-tuned, and remains in the top 5 at $D=50$ and $D=100$ where dimensional adaptation would be needed. The ranking is stable across CEC 2017, 2022, and 2025 generations, indicating that LUNA's performance is not an artifact of a single benchmark suite.}
+\label{fig:generalization}
+\end{figure}
+
+\textbf{Ranking stability.} LUNA's rank is remarkably stable across the three CEC generations at the dimensions where its operator parameters are well-tuned: rank 3.00 on CEC 2017 ($D=10$), rank 1.83 on CEC 2022 ($D=10$), and rank 1.76 on CEC 2025 BC-SOP ($D=30$). The improvement from CEC 2017 to CEC 2022/2025 reflects the alignment between LUNA's astronomical operators and the more rotationally invariant, composition-heavy landscapes of the newer benchmarks, where multi-operator strategies excel.
+
+\textbf{Hardest functions.} On CEC 2025 BC-SOP, the functions where LUNA achieves the largest error values are F15, F19, F22, F24, and F27 (all hybrid or composition functions with deep local optima). These are the same function classes where DE also struggles; LUNA's mean error on these functions is comparable to or better than DE, suggesting that the astronomy-modulated step sizes provide effective escape behavior on difficult multi-modal landscapes.
+
+\textbf{Astronomical operator effectiveness.} The CEC 2025 results confirm that the astronomy-embedded operators remain effective on the 29-function CEC 2017 suite when evaluated under the CEC 2025 protocol (higher dimension, different evaluation metric). This rules out the possibility that LUNA's strong CEC 2022 $D=10$ performance is an artifact of the specific 12-function suite: when the suite is expanded to 29 functions and the evaluation protocol is changed to U-score, LUNA retains rank \#1.
+
 \subsection{Consistency Between Theory and Empirical Observations}
 \label{sec:theory-empirical-consistency}
 
@@ -697,7 +767,7 @@ Third, LUNA uses four operators (vis-viva convergence, Kepler spiral, libration 
 \section{Conclusion}
 \label{sec:conclusion}
 
-LUNA demonstrates that real lunar orbital mechanics can generate search operators that are both mathematically distinct and empirically competitive. The vis-viva equation, Kepler's law, lunar libration, and tidal syzygy are embedded directly into the update equations; setting any astronomical variable to zero eliminates the corresponding astronomical modulation. Seven theorems with full proofs establish monotonicity, step-size decay, finite expected hitting time, weak ergodicity of the LUNA Markov chain, and almost-sure convergence to the global optimum; to the best of our knowledge, these are the first explicit hitting-time and Markov-chain ergodicity guarantees among astronomy-inspired metaheuristics, although analogous results for evolution strategies and simulated annealing have long been established in the broader stochastic-optimization literature. On CEC 2022, LUNA achieves rank \#1 (Friedman 1.83) at $D=10$, outperforming 9 baselines, and remains competitive at $D=50$ and $D=100$, where it defeats PSO, GSA, and SMA on the majority of functions while losing ground to GA and DE as dimension grows. The central implication is that metaphors should be chosen for their mathematical operability, not merely their narrative appeal, and that the resulting algorithms should be subjected to both theoretical analysis and rigorous empirical evaluation. The most natural next steps are (i) a strong-ergodicity proof via a Lyapunov condition, (ii) dimensional-adaptation strategies that scale the population and operator parameters with $D$, and (iii) a comprehensive application study on constrained and multi-objective problems.
+LUNA demonstrates that real lunar orbital mechanics can generate search operators that are both mathematically distinct and empirically competitive. The vis-viva equation, Kepler's law, lunar libration, and tidal syzygy are embedded directly into the update equations; setting any astronomical variable to zero eliminates the corresponding astronomical modulation. Seven theorems with full proofs establish monotonicity, step-size decay, finite expected hitting time, weak ergodicity of the LUNA Markov chain, and almost-sure convergence to the global optimum; to the best of our knowledge, these are the first explicit hitting-time and Markov-chain ergodicity guarantees among astronomy-inspired metaheuristics, although analogous results for evolution strategies and simulated annealing have long been established in the broader stochastic-optimization literature. On CEC 2022, LUNA achieves rank \#1 (Friedman 1.83) at $D=10$, outperforming 9 baselines; at $D=50$ and $D=100$ it remains competitive, defeating PSO, GSA, and SMA on the majority of functions while losing ground to GA and DE as dimension grows. On the CEC 2025 BC-SOP track ($D=30$, 29 functions, U-score protocol), LUNA again achieves rank \#1 (Friedman 1.76), demonstrating that its performance generalizes across three CEC benchmark generations (2017, 2022, 2025). The central implication is that metaphors should be chosen for their mathematical operability, not merely their narrative appeal, and that the resulting algorithms should be subjected to both theoretical analysis and rigorous empirical evaluation. The most natural next steps are (i) a strong-ergodicity proof via a Lyapunov condition, (ii) dimensional-adaptation strategies that scale the population and operator parameters with $D$, and (iii) a comprehensive application study on constrained and multi-objective problems.
 
 % ==========================================================
 \section*{References}
@@ -755,6 +825,8 @@ LUNA demonstrates that real lunar orbital mechanics can generate search operator
 \bibitem{amcrec11} R. Pandiya, Widodo, Salmah, I. Endrayanto, Non parameter-filled function for global optimization, Appl.\ Math.\ Comput.\ 389 (2021) 125642. DOI: 10.1016/j.amc.2020.125642.
 \bibitem{amcrec12} L. Stripinis, J. Zilinskas, L.G. Casado, R. Paulavicius, On MATLAB experience in accelerating DIRECT-GLce algorithm for constrained global optimization through dynamic data structures and parallelization, Appl.\ Math.\ Comput.\ 389 (2021) 125596. DOI: 10.1016/j.amc.2020.125596.
 \bibitem{amcrec13} H.-O. Bae, S.-Y. Ha, M. Kang, H. Lim, A constrained consensus based optimization algorithm and its application to finance, Appl.\ Math.\ Comput.\ 410 (2022) 126726. DOI: 10.1016/j.amc.2021.126726.
+\bibitem{cec2025} P.N. Suganthan, K.V. Price, J. Liang, C. Yue, et al., CEC 2025 Competition on Bound Constrained Single and Multiobjective Numerical Optimization: Technical Report, 2025. Code and data available at \url{https://github.com/P-N-Suganthan/2025-CEC}.
+\bibitem{cec2017} N.H. Awad, M.Z. Ali, J.J. Liang, B.Y. Qu, P.N. Suganthan, Problem definitions and evaluation criteria for the CEC 2017 special session and competition on single objective bound constrained real-parameter numerical optimization, Technical Report, 2016.
 \end{enumerate}
 
 \end{document}

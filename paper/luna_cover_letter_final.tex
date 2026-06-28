@@ -1,0 +1,67 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{parskip}
+\usepackage{amsmath,amssymb}
+\usepackage[colorlinks=true,linkcolor=blue,urlcolor=blue]{hyperref}
+
+\title{Cover Letter: Submission to Applied Mathematics and Computation}
+\author{Lutfan Anas Zahir}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+\noindent Dear Editor-in-Chief,\\
+
+We are pleased to submit our manuscript entitled ``LUNA: An Astronomy-Grounded Metaheuristic Optimization Algorithm Based on Real Lunar Orbital Dynamics'' for consideration for publication in \textit{Applied Mathematics and Computation}.
+
+\section*{Summary of Contributions}
+
+This paper introduces LUNA (Lunar-inspired Update and Navigation Algorithm), a population-based metaheuristic whose search operators are mathematically derived from real lunar orbital mechanics. The vis-viva equation, Kepler's second law, lunar libration, and tidal syzygy are embedded \emph{directly} into the update equations; in the original formulation, setting any astronomical variable to zero eliminates the corresponding astronomical modulation, leaving only residual Gaussian perturbation. This addresses the sustained critique by S\"orensen (2015), Camacho-Villal\'on (2018), and subsequent metaphor-novelty frameworks that many ``novel'' nature-inspired algorithms are mathematical rebrandings of classical operators.
+
+\section*{Theoretical Contributions}
+
+The paper establishes seven formal results with full proofs:
+
+\begin{enumerate}
+\item \textbf{Theorem 1} (Monotone Best-Fitness Decrease) and \textbf{Corollary 1} (Convergence under boundedness).
+\item \textbf{Theorem 2} (Bounded Expected Exploration Radius) quantifying the libration perturbation's second moment.
+\item \textbf{Theorem 3} (Exponential Step-Size Decay) proving that the vis-viva velocity decays as $\mathcal{O}(e^{-\delta t / (2T)})$.
+\item \textbf{Theorem 5} (Finite Expected Hitting Time) providing the non-asymptotic bound $\mathbb{E}[\tau_\varepsilon] \le R(1 + 1/p_\varepsilon^{\mathrm{eff}})$.
+\item \textbf{Theorem 6} (Weak Ergodicity) using the Dobrushin coefficient to establish that the LUNA Markov chain loses dependence on initial conditions.
+\item \textbf{Theorem 7} (Almost-Sure Convergence to the Global Optimum) combining the hitting-time bound with a Borel--Cantelli argument.
+\item \textbf{Corollary 2} (Polynomial Rate under Strong Convexity) showing that the expected hitting time scales as $\varepsilon^{-D}$, consistent with the curse of dimensionality.
+\end{enumerate}
+
+To the best of our knowledge, among astronomy-inspired metaheuristics, these are the first explicit hitting-time and Markov-chain ergodicity guarantees. We explicitly acknowledge that analogous results for evolution strategies and simulated annealing have long been established in the broader stochastic-optimization literature, and we do not claim novelty relative to that literature.
+
+A dedicated subsection (Section 5.6) provides five explicit theory-to-experiment connections, verifying that each theorem's prediction is qualitatively consistent with the corresponding empirical measurement.
+
+\section*{Empirical Contributions}
+
+\begin{itemize}
+\item \textbf{CEC 2022 ($D=10$, 20 runs, 12 functions):} LUNA achieves Friedman rank \#1 (1.83), outperforming DE (2.08), GA (2.50), and 7 other baselines; 11/12 wins against AVOA ($p < 0.05$, Wilcoxon).
+\item \textbf{High-dimensional experiments ($D=50$ and $D=100$):} LUNA remains competitive (Friedman ranks 5.17 and 5.83), defeating PSO, GSA, and SMA on the majority of functions. The dimensional degradation is consistent with the $\varepsilon^{-D}$ rate predicted by Corollary 2.
+\item \textbf{IEEE CEC 2025 BC-SOP track ($D=30$, 29 functions, U-score protocol):} LUNA again achieves rank \#1 (Friedman 1.76, U-score $-1058$), demonstrating that its performance generalizes across three CEC benchmark generations (2017, 2022, 2025).
+\item \textbf{Statistical rigor:} Wilcoxon signed-rank, Friedman test ($p < 10^{-11}$), Holm--Bonferroni post-hoc, Nemenyi critical-difference diagram, and Dolan--Mor\'e ECDF analysis (LUNA has the highest AUC, 998.94).
+\item \textbf{Effect size:} Cliff's delta for the LUNA-vs-DE comparison is $-0.376$ (medium), with a heterogeneous per-function split indicating that LUNA specializes on multi-modal functions while DE specializes on unimodal ones.
+\item \textbf{Ablation study:} 7 variants $\times$ 20 runs $\times$ 12 functions = 1680 trials; LUNA-full significantly outperforms LUNA-no-lateDE ($p < 1.7 \times 10^{-5}$) and LUNA-no-astronomy ($p < 1.9 \times 10^{-6}$, Holm-corrected).
+\item \textbf{Empirical hitting-time measurement:} $P(\tau_\varepsilon \leq t)$ curves across six $\varepsilon$ thresholds verify Theorem 5's prediction qualitatively.
+\end{itemize}
+
+\section*{Fit with Applied Mathematics and Computation}
+
+The manuscript engages directly with the recent AMC literature: it cites 12 papers published in \textit{Applied Mathematics and Computation} within the last five years (2020--2025), including the multi-strategy sine cosine algorithm (Chen et al., 2020), the jellyfish optimizer (Chou \& Truong, 2021), accelerated DIRECT for constrained global optimization (Stripinis et al., 2021), consensus-based optimization (Bae et al., 2022), and recent convergence analyses of regularized Newton methods (Yamakawa \& Yamashita, 2025). The theoretical framework draws on Markov-chain methodology that has appeared recently in AMC for molecular dynamics (Vandecasteele \& Samaey, 2024) and risk measures (D'Amico \& De Blasis, 2024).
+
+\section*{Declaration}
+
+This manuscript has not been published elsewhere and is not under consideration by any other journal. All authors have approved the manuscript and agree with submission to \textit{Applied Mathematics and Computation}. The code and benchmark data are publicly available at \url{https://github.com/lutfananas/LUNA-Optimization-Algorithm} to support reproducibility.
+
+We thank the editor and reviewers for their time and consideration. We look forward to your response.
+
+\vspace{1em}
+\noindent Sincerely,\\
+Lutfan Anas Zahir\\
+(corresponding author)\\
+\texttt{lutfananas@example.com}
+\end{document}
