@@ -1,0 +1,28 @@
+{
+  "description": "ECDF (Dolan-More 2002) on CEC 2022 D=10. For each algorithm, fraction of (function,run) pairs whose final fitness is within factor tau of the best result for that function.",
+  "n_instances": 240,
+  "auc": {
+    "LUNA": 998.9316111745,
+    "PSO": 914.3677088080517,
+    "GA": 998.9079701223009,
+    "DE": 995.3894943947822,
+    "GSA": 701.3065265819745,
+    "WOA": 989.7049070999766,
+    "GWO": 931.8838562534463,
+    "HHO": 996.7947436661065,
+    "SMA": 795.8626507988855,
+    "AVOA": 986.2416638150867
+  },
+  "sorted_by_auc": [
+    "LUNA",
+    "GA",
+    "HHO",
+    "DE",
+    "WOA",
+    "AVOA",
+    "GWO",
+    "PSO",
+    "SMA",
+    "GSA"
+  ]
+}

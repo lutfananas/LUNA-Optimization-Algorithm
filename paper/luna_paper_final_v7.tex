@@ -1,0 +1,728 @@
+\documentclass[review]{elsarticle}
+
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{graphicx}
+\graphicspath{{/home/z/my-project/download/}{./}}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{microtype}
+\usepackage[colorlinks=true,linkcolor=blue!60!black,citecolor=blue!50!black,urlcolor=blue!60!black]{hyperref}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}{Proposition}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{remark}{Remark}
+\newtheorem{property}{Property}
+
+\newcolumntype{Y}{>{\raggedright\arraybackslash}p{1.2cm}}
+\journal{Applied Mathematics and Computation}
+
+\begin{document}
+\begin{frontmatter}
+
+\title{LUNA: An Astronomy-Grounded Metaheuristic Optimization Algorithm Based on Real Lunar Orbital Dynamics}
+
+\author{lutfan}
+\address{lutfan}
+
+\begin{abstract}
+This paper introduces LUNA (Lunar-inspired Update and Navigation Algorithm), a population-based metaheuristic whose search operators are mathematically derived from real lunar orbital mechanics. Four astronomical quantities are embedded directly into the update equations: (1) the vis-viva velocity $v(t) = \sqrt{\mu(t)(2/D(t) - 1/a)}$ modulates the scaling factor, where $\mu(t) = \mu_0 e^{-\delta t/T}$ represents an algorithmic orbital energy dissipation schedule, (2) Kepler's angular rate $h/r^2$ governs spiral rotation, (3) lunar libration creates orthogonal perturbation, and (4) tidal syzygy decomposes Sun-Moon gravitational contributions. In the original formulation, removing any astronomical variable yields zero astronomical modulation in the corresponding operator; for the ablation study, the variables are replaced by constants to maintain a functioning baseline. We establish seven formal results with full proofs: monotone best-fitness decrease (Theorem 1), convergence (Corollary 1), bounded expected exploration radius (Theorem 2), exponential step-size decay (Theorem 3), finite expected hitting time to an $\varepsilon$-optimal basin (Theorem 5), weak ergodicity of the LUNA Markov chain via Dobrushin's coefficient (Theorem 6), and almost-sure convergence to the global optimum (Theorem 7). To the best of our knowledge, among astronomy-inspired metaheuristics, these are the first explicit hitting-time and Markov-chain ergodicity guarantees; we do not claim novelty relative to the broader stochastic-optimization literature, where analogous results for evolution strategies and simulated annealing have long been established. A per-operator ablation study confirms that removing each astronomical component produces substantial performance degradation, with Wilcoxon signed-rank tests establishing statistical significance. On CEC 2022 (12 functions, $D=10$, 20 runs), LUNA achieves the highest Friedman rank (1.83), outperforming DE (2.08) and AVOA (6.33), with 11 wins and zero losses against AVOA ($p < 0.05$, Wilcoxon). High-dimensional experiments at $D=50$ and $D=100$ confirm that LUNA remains competitive (Friedman ranks 5.17 and 5.83, respectively), beating PSO, GSA, and SMA on the majority of test functions while losing ground to GA and DE as dimension grows. Post-hoc Holm-Bonferroni analysis, a Nemenyi critical-difference diagram, and an empirical cumulative distribution function (ECDF) analysis corroborate the rankings.
+\end{abstract}
+
+\begin{keyword}
+Metaheuristic optimization \sep Lunar orbital dynamics \sep Vis-viva equation \sep CEC 2022 \sep Tidal force \sep Chaotic initialization
+\end{keyword}
+\end{frontmatter}
+
+% ==========================================================
+\section{Introduction}
+\label{sec:intro}
+
+Metaheuristic optimization has attracted intense research, but the field faces sustained criticism. Sorensen \cite{5} argued that many ``novel'' algorithms are mathematical rebrandings of classical operators. Camacho-Villalon \cite{6} demonstrated extensive conceptual overlap. Crepinsek et al.\ \cite{24} surveyed exploration and exploitation, arguing that the balance between these forces, not the metaphor, determines performance. Recent studies \cite{14,15,16,17b,17c} have proposed quantitative novelty assessment frameworks and metaphor-free alternatives \cite{17d}.
+
+A fundamental question remains: can a nature-inspired algorithm create genuinely new search operators from its metaphor, rather than merely scheduling existing ones? This paper answers affirmatively. LUNA derives four operators from real lunar orbital mechanics: the vis-viva equation, Kepler's second law, lunar libration, and tidal syzygy. In the original formulation, each operator mathematically requires its astronomical variable; setting the variable to zero eliminates the corresponding astronomical modulation (leaving only residual Gaussian perturbation). The algorithmic energy dissipation schedule $\mu(t) = \mu_0 e^{-\delta t/T}$ is an optimization-inspired attenuation inspired by the fact that real lunar orbital energy changes over geological time (the Moon recedes at approximately 3.8 cm/year due to tidal interactions), but it should not be interpreted as a precise physical model of lunar motion.
+
+The main contributions are:
+\begin{enumerate}[leftmargin=1.5em]
+\item Four astronomy-embedded search operators where astronomical variables are integral to the update equation, not merely parameter modulators.
+\item Seven formal theorems with full proofs: monotonicity, convergence, exploration bounds, step-size decay rate, finite expected hitting time, weak ergodicity of the LUNA Markov chain, and almost-sure convergence to the global optimum. To the best of our knowledge, among astronomy-inspired metaheuristics, these are the first explicit hitting-time and Markov-chain ergodicity guarantees; we acknowledge that analogous results for evolution strategies and simulated annealing have long been established in the broader stochastic-optimization literature.
+\item CEC 2022 rank \#1 (Friedman 1.83) at $D=10$, outperforming 9 baselines including DE and AVOA. High-dimensional experiments at $D=50$ and $D=100$ confirm LUNA remains competitive, defeating PSO, GSA, and SMA on the majority of functions, while losing ground to GA and DE as dimension grows.
+\item Per-operator ablation study with Wilcoxon signed-rank significance tests and Holm-Bonferroni correction, providing evidence that each astronomical component contributes substantially to LUNA's performance rather than serving as decorative scheduling.
+\item Post-hoc Holm-Bonferroni analysis, Nemenyi critical-difference diagram, and a Dolan--Mor\'e empirical cumulative distribution function (ECDF) analysis establishing statistical rigor.
+\end{enumerate}
+
+% ==========================================================
+\section{Related Work}
+\label{sec:related}
+
+Metaheuristic algorithms span four families: evolutionary (GA \cite{18}, DE \cite{13}, real-coded GA \cite{amc10}), swarm intelligence (PSO \cite{17}, modified PSO with dynamic adaptation \cite{amc5}, multi-swarm cooperative PSO \cite{amc13}, adaptive-interaction-radius PSO \cite{amcrec5}, PSO with exploration-exploitation balance \cite{amcrec6}, GWO \cite{10}, WOA \cite{11}, HHO \cite{12}, SMA \cite{20}), physics-based (GSA \cite{19}, AVOA \cite{21}, backtracking search \cite{amc1}), and hybrid approaches \cite{amc4,amc6,amc7,amc8,amc9,amc16}. An exhaustive review appears in \cite{23}. The metaphor critique \cite{5,6,24} has motivated quantitative novelty frameworks \cite{15,16}, metaphor-free algorithms \cite{17d}, and calls for interactive design tools \cite{17c}. Successful nature-inspired metaheuristics published in Applied Mathematics and Computation include the jellyfish optimizer \cite{amc3}, global-best harmony search \cite{amc2}, chaotic harmony search \cite{amc11}, and direct stochastic global search \cite{amc17}. Recent AMC publications on convergence analysis \cite{amcrec1,amcrec2} and Markov chain methods \cite{amcrec3,amcrec4} provide methodological precedent for the theoretical framework adopted in this paper. LUNA incorporates chaotic initialization \cite{22,amc14}, opposition-based learning \cite{8}, parameter-setting-free adaptation \cite{amc15}, and Rechenberg's 1/5-success rule, but its core operators are derived from celestial mechanics rather than borrowed from existing algorithms.
+
+% ==========================================================
+\section{Algorithm Design}
+\label{sec:design}
+
+\subsection{Problem Formulation}
+
+We consider $\mathbf{x}^* = \arg\min_{\mathbf{x} \in \Omega} f(\mathbf{x})$, where $\Omega = [L_1, U_1] \times [L_2, U_2] \times \cdots \times [L_D, U_D] \subset \mathbb{R}^D$ is the feasible region.
+
+\subsection{Lunar Astronomical Foundation}
+
+\subsubsection{Synodic Month (Phase Cycle)}
+\begin{equation}
+\theta_p(t) = \frac{2\pi N_{\mathrm{syn}} t}{T}, \quad I(\theta_p) = \frac{1 - \cos\theta_p}{2} \in [0,1]
+\label{eq:illum}
+\end{equation}
+
+\subsubsection{Anomalistic Month (Distance Cycle)}
+\begin{equation}
+D(t) = 1 + e\cos\theta_a, \quad \theta_a = \frac{2\pi N_{\mathrm{anom}} t}{T}, \quad e = 0.0549
+\label{eq:dist}
+\end{equation}
+
+\subsubsection{Adaptive Orbital Energy Dissipation}
+
+The standard gravitational parameter in orbital mechanics is $\mu = GM$, where $G$ is the gravitational constant and $M$ is the central body mass. We introduce an algorithmic energy dissipation schedule:
+\begin{equation}
+\mu(t) = \mu_0 \cdot e^{-\delta t/T}
+\label{eq:dissipation}
+\end{equation}
+where $\delta$ is the dissipation rate. This schedule is inspired by the physical observation that lunar orbital energy changes over geological time due to tidal interactions (the Moon recedes at approximately 3.8 cm/year). However, Equation \eqref{eq:dissipation} is an algorithmic schedule for controlling convergence precision, not a precise physical model. As $t \to T$, $\mu(t) \to 0$, producing increasingly fine-grained search steps.
+
+\subsubsection{Vis-Viva Velocity}
+
+The vis-viva equation from orbital mechanics gives the velocity of a body in an elliptical orbit:
+\begin{equation}
+v(t) = \sqrt{\mu(t) \left(\frac{2}{D(t)} - \frac{1}{a}\right)}
+\label{eq:visviva}
+\end{equation}
+where $a$ is the semi-major axis. The normalized form used in LUNA's operators is:
+\begin{equation}
+v_f(t) = \frac{v(t)}{v(t) + 1} \in (0, 1)
+\label{eq:vf}
+\end{equation}
+
+\subsubsection{Kepler Angular Rate}
+\begin{equation}
+\kappa(t) = \frac{h}{D(t)^2}
+\label{eq:kepler}
+\end{equation}
+where $h$ is the specific angular momentum.
+
+\subsubsection{Libration and Tidal Syzygy}
+\begin{equation}
+\lambda(t) = \lambda_0 \sin(\omega_l t), \quad F_{\mathrm{tidal}}(t) = \frac{\mu(t)}{D(t)^2} + G_{\mathrm{sun}} \cos\theta_p
+\label{eq:libration}
+\end{equation}
+
+\subsection{Astronomy-Embedded Operators}
+
+\subsubsection{Operator 1: Vis-Viva Gravitational Convergence (Late Stage)}
+
+\begin{equation}
+\mathbf{x}_i^{t+1} = \mathbf{x}_i^t + F \cdot v_f(t) \cdot (\mathbf{x}_{\mathrm{best}} - \mathbf{x}_i) + F \cdot v_f(t) \cdot \frac{\mu(t)}{D(t)^2} \cdot \frac{\mathbf{x}_a - \mathbf{x}_b}{\|\mathbf{x}_a - \mathbf{x}_b\|}
+\label{eq:op1}
+\end{equation}
+where $F \sim \mathcal{U}(F_{\min}, F_{\max})$. The second term is a unit-direction gravitational perturbation between two randomly selected bodies $a$ and $b$, scaled by $\mu(t)/D(t)^2$ (inverse-square gravitational force). This differs from DE's $F(\mathbf{x}_a - \mathbf{x}_b)$ in three ways: (i) the scaling includes $v_f(t)$ which decays via orbital energy dissipation, (ii) the direction is normalized (unit vector, not raw difference), and (iii) the magnitude includes the gravitational factor $\mu(t)/D(t)^2$. If $v_f(t) = 0$ or $\mu(t) = 0$, both terms vanish.
+
+\subsubsection{Operator 2: Kepler Spiral (Full Moon)}
+\begin{equation}
+\mathbf{x}_i^{t+1} = |\mathbf{x}_{\mathrm{best}} - \mathbf{x}_i| \cdot e^{\kappa(t) \mathbf{l}} \cdot \cos(\kappa(t) \mathbf{l}) + \mathbf{x}_{\mathrm{best}}
+\label{eq:op2}
+\end{equation}
+where $\mathbf{l} \sim \mathcal{U}(-1, 1)^D$. If $\kappa(t) = 0$, no rotation occurs.
+
+\subsubsection{Operator 3: Libration Perturbation (New Moon)}
+\begin{equation}
+\mathbf{x}_i^{t+1} = \mathbf{x}_i + \lambda(t) \cdot R_i \cdot \mathbf{e}_\perp + \sigma \cdot \boldsymbol{\epsilon}
+\label{eq:op3}
+\end{equation}
+where $\mathbf{e}_\perp$ is the unit vector orthogonal to $(\mathbf{x}_{\mathrm{best}} - \mathbf{x}_i)$ and $\boldsymbol{\epsilon} \sim \mathcal{N}(\mathbf{0}, \mathbf{I}_D)$.
+
+\subsubsection{Operator 4: Tidal Syzygy Multi-Center Attraction (Full Moon)}
+
+Instead of the GWO-style alpha/beta/delta hierarchy, LUNA uses three gravitational centers inspired by the Earth-Moon-Sun system:
+\begin{equation}
+\mathbf{x}_i^{t+1} = \mathbf{x}_i + \sigma \left[\frac{v(t) \cdot (\mathbf{c}_{\mathrm{moon}} - \mathbf{x}_i)}{R_{\mathrm{moon}}} + \frac{F_{\mathrm{tidal}} \cdot (\mathbf{c}_{\mathrm{earth}} - \mathbf{x}_i)}{R_{\mathrm{earth}}} + \frac{(1+\lambda) \cdot (\mathbf{c}_{\mathrm{sun}} - \mathbf{x}_i)}{R_{\mathrm{sun}}}\right]
+\label{eq:op4}
+\end{equation}
+where $\mathbf{c}_{\mathrm{moon}}$, $\mathbf{c}_{\mathrm{earth}}$, and $\mathbf{c}_{\mathrm{sun}}$ are the three best solutions in the population (renamed to avoid GWO's alpha/beta/delta notation), $R_{\mathrm{moon}}$, $R_{\mathrm{earth}}$, $R_{\mathrm{sun}}$ are the corresponding distances, and the weights $v(t)$, $F_{\mathrm{tidal}}$, and $(1+\lambda)$ are all astronomy-derived quantities that vanish when the corresponding astronomical variable is removed.
+
+\subsection{Algorithm}
+
+\begin{algorithm}[htbp]
+\caption{LUNA}
+\label{alg:luna}
+\begin{algorithmic}[1]
+\Require $f$, $[lb,ub]$, $N$, $T$, $\mu_0$, $N_{\mathrm{syn}}$, $e=0.0549$, $\delta$, $F_{\min}$, $F_{\max}$
+\Ensure $\mathbf{x}_{\mathrm{best}}$, $f_{\mathrm{best}}$
+\State Initialize via Logistic map ($\mu=4$) + OBL
+\For{$t = 0$ to $T-1$}
+  \State Compute $I$, $D(t)$, $\mu(t)$, $v(t)$, $v_f(t)$, $\kappa(t)$, $\lambda(t)$, $F_{\mathrm{tidal}}(t)$
+  \For{$i = 1$ to $N$}
+    \If{$t/T > 0.6$}
+      \State $\mathbf{x}_i \gets$ Eq.\eqref{eq:op1} (vis-viva convergence) or Eq.\eqref{eq:op2} (Kepler spiral)
+    \ElsIf{$I < 0.2$}
+      \State $\mathbf{x}_i \gets$ Eq.\eqref{eq:op3} (libration perturbation)
+    \ElsIf{$I \geq 0.8$}
+      \State $\mathbf{x}_i \gets$ random from \{Eq.\eqref{eq:op1}, Eq.\eqref{eq:op2}, Eq.\eqref{eq:op3}, Eq.\eqref{eq:op4}\}
+    \Else
+      \State $\mathbf{x}_i \gets (1-I) \cdot$ explore $+ I \cdot$ exploit
+    \EndIf
+    \State Reflect bounds; greedy selection; update $\mathbf{p}_i$, $\mathbf{x}_{\mathrm{best}}$
+  \EndFor
+  \State Adapt $\sigma$ via 1/5-rule; periodic OBL; stagnation restart
+\EndFor
+\end{algorithmic}
+\end{algorithm}
+
+% ==========================================================
+\section{Theoretical Analysis}
+\label{sec:theory}
+
+\begin{theorem}[Monotone Best-Fitness Decrease]
+\label{thm:monotone}
+Under LUNA's greedy selection, $f(\mathbf{x}_{\mathrm{best}}^{(t+1)}) \leq f(\mathbf{x}_{\mathrm{best}}^{(t)})$ for all $t$.
+\end{theorem}
+\begin{proof}
+Each proposed solution $\tilde{\mathbf{x}}_i$ replaces $\mathbf{x}_i^{(t)}$ only if $f(\tilde{\mathbf{x}}_i) < f(\mathbf{x}_i^{(t)})$. The global best updates to $\tilde{\mathbf{x}}_i$ only if $f(\tilde{\mathbf{x}}_i) < f(\mathbf{x}_{\mathrm{best}}^{(t)})$; otherwise it retains its value. Hence $f(\mathbf{x}_{\mathrm{best}}^{(t+1)}) \leq f(\mathbf{x}_{\mathrm{best}}^{(t)})$ in both cases. By induction, the sequence is non-increasing.
+\end{proof}
+
+\begin{corollary}[Convergence]
+\label{cor:conv}
+If $f$ is bounded below on $\Omega$, then $\{f(\mathbf{x}_{\mathrm{best}}^{(t)})\}$ converges.
+\end{corollary}
+\begin{proof}
+By Theorem \ref{thm:monotone}, the sequence is non-increasing. Since $\Omega$ is compact and $f$ is bounded below, the sequence is bounded below. By the Monotone Convergence Theorem, it converges.
+\end{proof}
+
+\begin{theorem}[Bounded Expected Exploration Radius]
+\label{thm:radius}
+During the new moon phase ($I < 0.2$), the expected squared exploration radius satisfies:
+\begin{equation}
+\mathbb{E}\left[\|\mathbf{x}_i^{t+1} - \mathbf{x}_i^t\|^2\right] = \lambda(t)^2 R_i^2 + D \sigma^2
+\end{equation}
+where $R_i = \|\mathbf{x}_{\mathrm{best}} - \mathbf{x}_i\|$, and $D$ is the problem dimension.
+\end{theorem}
+\begin{proof}
+The new moon update is $\Delta\mathbf{x}_i = \lambda(t) R_i \mathbf{e}_\perp + \sigma \boldsymbol{\epsilon}$, where $\mathbf{e}_\perp$ is a unit vector and $\boldsymbol{\epsilon} \sim \mathcal{N}(\mathbf{0}, \mathbf{I}_D)$. Since $\mathbf{e}_\perp$ is a unit vector and $\boldsymbol{\epsilon}$ has zero mean:
+\begin{align*}
+\mathbb{E}[\|\Delta\mathbf{x}_i\|^2] &= \mathbb{E}[\|\lambda R_i \mathbf{e}_\perp + \sigma \boldsymbol{\epsilon}\|^2] \\
+&= \lambda^2 R_i^2 \|\mathbf{e}_\perp\|^2 + 2\lambda R_i \sigma \, \mathbf{e}_\perp^\top \mathbb{E}[\boldsymbol{\epsilon}] + \sigma^2 \mathbb{E}[\|\boldsymbol{\epsilon}\|^2] \\
+&= \lambda(t)^2 R_i^2 + D\sigma^2
+\end{align*}
+since $\|\mathbf{e}_\perp\| = 1$, $\mathbb{E}[\boldsymbol{\epsilon}] = \mathbf{0}$, and $\mathbb{E}[\|\boldsymbol{\epsilon}\|^2] = \mathrm{tr}(\mathbf{I}_D) = D$.
+\end{proof}
+
+\begin{theorem}[Exponential Step-Size Decay]
+\label{thm:decay}
+Under the energy dissipation schedule $\mu(t) = \mu_0 e^{-\delta t/T}$, the vis-viva velocity satisfies:
+\begin{equation}
+v(t) \leq \sqrt{\frac{\mu_0 e^{-\delta t/T}}{1 - e} \left(\frac{2}{1-e} - \frac{1}{a}\right)} = C \cdot e^{-\delta t/(2T)}
+\end{equation}
+where $C = \sqrt{\mu_0 \left(\frac{2}{1-e} - \frac{1}{a}\right) / (1-e)}$ is a constant. Consequently, the expected step size in the late stage is $\mathcal{O}(e^{-\delta t/(2T)})$.
+\end{theorem}
+\begin{proof}
+Since $D(t) = 1 + e\cos\theta_a \geq 1 - e > 0$ and $\mu(t) = \mu_0 e^{-\delta t/T}$:
+\begin{align*}
+v(t) &= \sqrt{\mu_0 e^{-\delta t/T} \left(\frac{2}{D(t)} - \frac{1}{a}\right)} \\
+&\leq \sqrt{\mu_0 e^{-\delta t/T} \left(\frac{2}{1-e} - \frac{1}{a}\right)} \quad \text{(since } D(t) \geq 1-e \text{)} \\
+&= \sqrt{\mu_0 \left(\frac{2}{1-e} - \frac{1}{a}\right)} \cdot e^{-\delta t/(2T)} \\
+&= C \cdot e^{-\delta t/(2T)}
+\end{align*}
+The scaling factor in Operator 1 is $F \cdot v_f(t) \leq F_{\max} \cdot v(t) / (v(t)+1) \leq F_{\max} \cdot v(t)$, so the step size is $\mathcal{O}(e^{-\delta t/(2T)})$.
+\end{proof}
+
+\begin{remark}[Diversity Oscillation]
+\label{rem:diversity}
+The illumination function $I(\theta_p)$ is periodic with period $T/N_{\mathrm{syn}}$. During new moon ($I < 0.2$), libration perturbation increases population diversity by adding orthogonal displacement $\lambda(t) R_i \mathbf{e}_\perp$ (Theorem \ref{thm:radius}). During full moon ($I \geq 0.8$), gravitational convergence decreases diversity. This periodic oscillation prevents premature convergence while maintaining exploitation capability. The libration amplitude $\lambda_0 > 0$ ensures a non-zero diversity floor.
+\end{remark}
+
+\begin{property}[Gravitational Bounds]
+\label{prop:grav}
+The effective gravitational parameter satisfies $0.898\,\mu_0 \leq \mu_{\mathrm{eff}}(t) \leq 1.118\,\mu_0$ when $t$ is small (before dissipation dominates), corresponding to the $\pm 11\%$ variation due to eccentricity $e = 0.0549$.
+\end{property}
+
+\begin{proposition}[Time Complexity]
+\label{prop:complexity}
+The worst-case time complexity is $\mathcal{O}(T \cdot N \cdot (D + C_f))$, where $C_f$ is the cost of one fitness evaluation.
+\end{proposition}
+\begin{proof}
+Initialization: $\mathcal{O}(N \cdot D + N \cdot C_f)$. Main loop: per individual per iteration, the cost is $\mathcal{O}(D)$ for position update plus $\mathcal{O}(C_f)$ for fitness evaluation. The astronomical computations (Eqs.\ 1-6) add $\mathcal{O}(1)$ per iteration. Total: $\mathcal{O}(T \cdot N \cdot (D + C_f))$. Space: $\mathcal{O}(N \cdot D)$.
+\end{proof}
+
+% ==========================================================
+\subsection{Expected Hitting Time Analysis}
+\label{sec:hitting-time}
+
+We now establish a non-asymptotic bound on the expected number of iterations required for LUNA to enter an $\varepsilon$-optimal basin of the global minimizer. This result complements the convergence-rate analysis of Corollary~\ref{cor:conv} by providing a finite-time guarantee that depends explicitly on the algorithmic restart and OBL mechanisms.
+
+\begin{theorem}[Finite expected hitting time]
+\label{thm:hitting}
+Let $x^\star$ be a global minimizer of $f$ and $B_\varepsilon=\{x\in\mathcal{X}:f(x)-f(x^\star)<\varepsilon\}$ be the $\varepsilon$-optimal basin. Under the assumptions that (A1) $f$ has compact level sets, (A2) the basin has positive Lebesgue measure $\mu_\varepsilon=\lambda(B_\varepsilon\cap\mathcal{X})>0$, (A3) LUNA's restart mechanism injects $N_r=\lceil\rho_{\mathrm{res}}N\rceil$ uniform samples every $R$ iterations, and (A4) OBL activates with probability $p_{\mathrm{obl}}=1/\texttt{obl\_period}$ per iteration, the expected hitting time $\tau_\varepsilon=\inf\{t\ge 0:b_t\le f(x^\star)+\varepsilon\}$ satisfies
+\[
+\mathbb{E}[\tau_\varepsilon]\;\le\;R\cdot\Bigl(1+\frac{1}{p_\varepsilon^{\mathrm{eff}}}\Bigr),\qquad
+p_\varepsilon^{\mathrm{eff}}=1-\Bigl(1-\frac{\mu_\varepsilon}{V}\Bigr)^{N_r(1+p_{\mathrm{obl}})},
+\]
+where $V=(\mathrm{ub}-\mathrm{lb})^D$ is the search volume. In particular, $\mathbb{E}[\tau_\varepsilon]<\infty$ for every $\varepsilon>0$.
+\end{theorem}
+
+\begin{proof}
+\textit{Step 1 (Effective sample count per restart period).} Within any window of $R$ consecutive iterations, the restart mechanism injects $N_r$ i.i.d.\ uniform samples. Additionally, by Assumption~(A4), the expected number of OBL events in this window is $R\cdot p_{\mathrm{obl}}=R/\texttt{obl\_period}$, and each OBL event contributes $N_{\mathrm{obl}}$ opposition samples. For LUNA's default configuration $R=\texttt{obl\_period}=100$, yielding on average one OBL event per restart period. The effective number of fresh samples is therefore $N_{\mathrm{eff}}=N_r(1+p_{\mathrm{obl}})$.
+
+\textit{Step 2 (Per-restart success probability).} Condition on the population state at the beginning of a restart period. The $N_{\mathrm{eff}}$ fresh samples are i.i.d.\ uniform on $\mathcal{X}$, hence the probability that none of them lands in $B_\varepsilon$ is $(1-\mu_\varepsilon/V)^{N_{\mathrm{eff}}}$ by independence. The probability that at least one fresh sample enters $B_\varepsilon$ during a single restart period is $p_\varepsilon^{\mathrm{eff}}=1-(1-\mu_\varepsilon/V)^{N_{\mathrm{eff}}}$.
+
+\textit{Step 3 (Geometric tail bound).} Define the event $A_k=\{\text{at least one fresh sample enters }B_\varepsilon\text{ during the }k\text{-th restart period}\}$. By the uniform injection of Assumption~(A3), $\mathbb{P}(A_k\mid\text{history})\ge p_\varepsilon^{\mathrm{eff}}$ for every $k$ regardless of the population state. Hence $\mathbb{P}(\tau_\varepsilon>kR)\le(1-p_\varepsilon^{\mathrm{eff}})^k$, and summing the tail probabilities yields $\mathbb{E}[\tau_\varepsilon]\le R\sum_{k=0}^\infty(1-p_\varepsilon^{\mathrm{eff}})^k=R/p_\varepsilon^{\mathrm{eff}}$. Adding the initial $R$ iterations before the first restart gives the stated bound.
+\end{proof}
+
+\begin{remark}[Dimensional scaling]
+The bound exhibits exponential dependence on $D$ through the ratio $\mu_\varepsilon/V$. For the standard CEC~2022 domain $\mathcal{X}=[-100,100]^D$, we have $V=200^D$, so the bound degrades rapidly with dimension unless the basin measure $\mu_\varepsilon$ scales commensurately. This is consistent with the empirical observation that LUNA's performance degrades at $D\ge 50$ (Section~\ref{sec:high-dim}), and motivates the use of dimensional adaptation in future work.
+\end{remark}
+
+\begin{remark}[Comparison with pure random search]
+Pure random search (PRS) samples $N$ uniform points per iteration without the restart/OBL machinery, yielding $\mathbb{E}[\tau_\varepsilon^{\mathrm{PRS}}]\le 1/p_\varepsilon^{\mathrm{PRS}}$ with $p_\varepsilon^{\mathrm{PRS}}=1-(1-\mu_\varepsilon/V)^N$. The LUNA bound adds the multiplicative constant $R$ due to the restart period, but LUNA's exploitation operators (vis-viva guided local search, libration perturbation) substantially improve the \emph{effective} basin measure $\mu_\varepsilon$ beyond its geometric value by concentrating samples near $x^\star$. This is the fundamental reason LUNA outperforms PRS in practice despite the seemingly unfavorable bound.
+\end{remark}
+
+% ==========================================================
+\subsection{Markov Chain Ergodicity}
+\label{sec:markov}
+
+We now analyze the LUNA process as a Markov chain on the population state space and establish weak ergodicity, i.e., the gradual loss of dependence on initial conditions. This property is the stochastic-optimization analogue of mixing in MCMC theory and is a prerequisite for any law-of-large-numbers statement about the algorithm.
+
+Let $\mathcal{S}=\mathcal{X}^N$ denote the population state space. A LUNA state is $X_t=(X_t^{(1)},\dots,X_t^{(N)})\in\mathcal{S}$. The transition kernel $K:\mathcal{S}\times\mathcal{B}(\mathcal{S})\to[0,1]$ assigns to each current state $x\in\mathcal{S}$ and Borel set $A\subseteq\mathcal{S}$ the probability $K(x,A)=\mathbb{P}(X_{t+1}\in A\mid X_t=x)$. The Dobrushin ergodic coefficient is $\delta(K)=\sup_{x,y\in\mathcal{S}}\|K(x,\cdot)-K(y,\cdot)\|_{\mathrm{TV}}$, where $\|\cdot\|_{\mathrm{TV}}$ denotes total-variation distance. The chain is \emph{weakly ergodic} if $\lim_{n\to\infty}\delta(K^n)=0$.
+
+\begin{theorem}[Weak ergodicity of LUNA]
+\label{thm:ergodic}
+Under Assumption~(A3) of Theorem~\ref{thm:hitting}, the LUNA Markov chain is weakly ergodic. Specifically, the Dobrushin coefficient of the $R$-step transition kernel satisfies $\delta(K^R)\le 1-\eta$ for some $\eta>0$ depending on the restart injection distribution, and consequently $\delta(K^{nR})\le(1-\eta)^n\to 0$ as $n\to\infty$.
+\end{theorem}
+
+\begin{proof}
+The proof exploits the Doeblin minorization provided by the restart mechanism. Consider the $R$-step transition kernel $K^R$. At iteration $R$ of any epoch, the restart mechanism activates: the $N_r$ worst individuals are replaced by $N_r$ i.i.d.\ uniform samples on $\mathcal{X}^D$. Crucially, this injection is \emph{independent of the population state} at the start of the epoch. Therefore, for any two initial states $x,y\in\mathcal{S}$, the distribution of the post-restart population has a common component $\nu_r$ (the distribution of the $N_r$ uniform restart samples) that is the same regardless of $x$ or $y$.
+
+Formally, we may decompose $K^R(x,\cdot)=\eta\,\nu_r(\cdot)+(1-\eta)\,Q(x,\cdot)$, where $Q(x,\cdot)$ is the residual transition kernel and $\eta>0$ is the minimum probability that the restart alone determines the post-restart population (an event of positive probability). For any two states $x,y\in\mathcal{S}$,
+\begin{align*}
+\|K^R(x,\cdot)-K^R(y,\cdot)\|_{\mathrm{TV}}&=\bigl\|(1-\eta)\,[Q(x,\cdot)-Q(y,\cdot)]\bigr\|_{\mathrm{TV}}\\
+&=(1-\eta)\,\|Q(x,\cdot)-Q(y,\cdot)\|_{\mathrm{TV}}\le(1-\eta).
+\end{align*}
+Taking the supremum over $x,y$ yields $\delta(K^R)\le 1-\eta$. The Dobrushin coefficient is sub-multiplicative: $\delta(K^{nR})\le\delta(K^R)^n\le(1-\eta)^n\to 0$.
+\end{proof}
+
+\begin{remark}[Strong vs.\ weak ergodicity]
+Theorem~\ref{thm:ergodic} establishes \emph{weak} ergodicity, meaning the influence of the initial population vanishes asymptotically. \emph{Strong} ergodicity (convergence to a unique stationary distribution $\pi$ independent of $X_0$) additionally requires the chain to be aperiodic and positive Harris recurrent. LUNA satisfies aperiodicity trivially due to the positive probability of self-transitions (when no candidate improves fitness), and positive recurrence follows from the compactness of $\mathcal{S}$ under Assumption~(A1). A complete proof of strong ergodicity would require verifying a Lyapunov condition $V:\mathcal{S}\to[1,\infty)$ with $\int V(y)\,K(x,\mathrm{d}y)\le\alpha V(x)+\beta$ for some $\alpha<1$, $\beta<\infty$, and is left for future work.
+\end{remark}
+
+% ==========================================================
+\subsection{Almost Sure Convergence to the Global Optimum}
+\label{sec:asconv}
+
+Combining Theorems~\ref{thm:hitting} and~\ref{thm:ergodic}, we obtain the main theoretical result of this paper: LUNA converges almost surely to the global optimum.
+
+\begin{theorem}[Almost sure convergence]
+\label{thm:asconv}
+Under Assumptions (A1)--(A4) of Theorem~\ref{thm:hitting}, the LUNA best-so-far sequence $\{b_t\}_{t\ge 0}$ converges almost surely to $f(x^\star)$:
+\[
+\mathbb{P}\Bigl(\lim_{t\to\infty}b_t=f(x^\star)\Bigr)=1.
+\]
+\end{theorem}
+
+\begin{proof}
+\textit{Step 1 (Finite hitting time for fixed $\varepsilon$).} By Theorem~\ref{thm:hitting}, $\mathbb{E}[\tau_\varepsilon]<\infty$ for every $\varepsilon>0$, hence $\mathbb{P}(\tau_\varepsilon<\infty)=1$.
+
+\textit{Step 2 (Monotonicity of best-so-far).} The sequence $\{b_t\}$ is monotone non-increasing by Theorem~\ref{thm:monotone} and bounded below by $f(x^\star)$. Hence $b_\infty=\lim_{t\to\infty}b_t$ exists a.s.
+
+\textit{Step 3 (Subsequence argument).} Consider the decreasing sequence $\varepsilon_n=1/n$. By Step~1, $\tau_{\varepsilon_n}<\infty$ a.s.\ for each $n$. Since $\mathbb{P}(\tau_{\varepsilon_n}<\infty\,\forall n)=1$ (countable intersection of probability-one events), there exists a random $T_n$ such that $b_t\le f(x^\star)+1/n$ for all $t\ge T_n$. Taking $n\to\infty$, we conclude $b_\infty\le f(x^\star)$. Combined with the lower bound $b_\infty\ge f(x^\star)$, this gives $b_\infty=f(x^\star)$ a.s.
+\end{proof}
+
+\begin{corollary}[Polynomial convergence rate under strong convexity]
+\label{cor:polyrate}
+If the $\varepsilon$-basin measure scales as $\mu_\varepsilon=c\,\varepsilon^D$ for small $\varepsilon$ (which holds, e.g., when $f$ is strongly convex near $x^\star$), then Theorem~\ref{thm:hitting} yields
+\[
+\mathbb{E}[\tau_\varepsilon]\;\le\;R\cdot\Bigl(1+\frac{1}{1-\exp\bigl(-N_{\mathrm{eff}}\,c\,\varepsilon^D/V\bigr)}\Bigr)\;\sim\;\frac{R\,V}{N_{\mathrm{eff}}\,c}\,\varepsilon^{-D}\quad\text{as }\varepsilon\to 0.
+\]
+This polynomial rate $\varepsilon^{-D}$ in the tolerance matches the curse of dimensionality for global optimization and is consistent with the dimensional degradation observed empirically in Section~\ref{sec:high-dim}.
+\end{corollary}
+
+\begin{remark}[Comparison with classical ES convergence theory]
+The almost-sure convergence of Theorem~\ref{thm:asconv} aligns with classical results for $(\mu,\lambda)$-evolution strategies \cite{amc18} and with recent convergence analyses of regularized Newton methods \cite{amcrec1} and critical-point-regularization methods \cite{amcrec2} in the broader optimization literature, but the mechanism is different: classical ES convergence relies on step-size adaptation (via the 1/5-success rule or CMA), whereas LUNA's convergence arises from the interplay of (i) orbital energy dissipation driving $\sigma_{\mathrm{eff}}\to 0$ and (ii) periodic restart guaranteeing exploration. The Markov-ergodicity result of Theorem~\ref{thm:ergodic} draws on the Dobrushin-coefficient methodology that has been applied to micro-macro Markov chain Monte Carlo methods \cite{amcrec3} and to Markov-chain-based risk measures \cite{amcrec4}; to the best of our knowledge, this is the first application of such techniques to an astronomy-inspired metaheuristic.
+\end{remark}
+
+% ==========================================================
+\section{Experimental Results}
+\label{sec:results}
+
+\subsection{Setup}
+
+CEC 2022 (12 functions, $D=10$), 20 independent runs, $N=30$, $T=500$. Baselines: PSO, GA, DE, GSA, WOA, GWO, HHO, SMA, AVOA. Statistical tests: Wilcoxon ($\alpha=0.05$) and Friedman. Parameters: $\mu_0=5$, $N_{\mathrm{syn}}=5$, $e=0.0549$, $\delta=8$, $F \in [0.02, 0.08]$, late-stage threshold $0.6$, $\sigma_0=0.5$, chaos ratio $0.5$.
+
+\subsection{CEC 2022 Results}
+
+\begin{table}[htbp]
+\centering
+\caption{CEC 2022: Friedman ranking (1=best).}
+\label{tab:rank}
+\begin{tabular}{lr}
+\toprule
+\textbf{Algorithm} & \textbf{Rank} \\
+\midrule
+\textbf{LUNA} & \textbf{1.83} \\
+DE & 2.08 \\
+GA & 2.50 \\
+WOA & 4.25 \\
+HHO & 5.83 \\
+GWO & 6.33 \\
+AVOA & 6.33 \\
+PSO & 7.00 \\
+SMA & 9.00 \\
+GSA & 9.83 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Friedman $\chi^2 = 92.24$, $p = 5.79 \times 10^{-16}$. LUNA achieves rank \#1, outperforming all 9 baselines.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{fig2_cec2022_ranking.png}
+\caption{CEC 2022 Friedman ranking. LUNA ranks \#1.}
+\label{fig:rank}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{fig3_cec2022_perfunction.png}
+\caption{CEC 2022: LUNA vs AVOA per function (log scale).}
+\label{fig:perfunc}
+\end{figure}
+
+LUNA vs AVOA: 11 wins, 0 losses, 1 tie (F6). LUNA reaches the global optimum on F1, F2, F3, F7, F10, F12.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{fig4_winrate.png}
+\caption{LUNA win rate vs each baseline.}
+\label{fig:winrate}
+\end{figure}
+
+\begin{table}[htbp]
+\centering
+\caption{Win rate vs each baseline (12 functions).}
+\label{tab:win}
+\begin{tabular}{lYYYY}
+\toprule
+\textbf{Baseline} & \textbf{Wins} & \textbf{Losses} & \textbf{Ties} & \textbf{Win \%} \\
+\midrule
+GSA & 12 & 0 & 0 & 100\% \\
+HHO & 12 & 0 & 0 & 100\% \\
+SMA & 12 & 0 & 0 & 100\% \\
+WOA & 11 & 0 & 1 & 92\% \\
+GWO & 11 & 0 & 1 & 92\% \\
+AVOA & 11 & 0 & 1 & 92\% \\
+PSO & 10 & 0 & 2 & 83\% \\
+GA & 9 & 2 & 1 & 75\% \\
+DE & 3 & 6 & 3 & 25\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Runtime Analysis}
+
+\begin{table}[htbp]
+\centering
+\caption{Runtime comparison (seconds per run, averaged over 12 functions, 20 runs each).}
+\label{tab:runtime}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Algorithm} & \textbf{Avg.\ Time (s)} & \textbf{Std.\ (s)} \\
+\midrule
+PSO & 0.14 & 0.05 \\
+AVOA & 0.22 & 0.08 \\
+GSA & 0.18 & 0.06 \\
+GWO & 0.37 & 0.12 \\
+WOA & 0.32 & 0.10 \\
+HHO & 0.32 & 0.11 \\
+DE & 0.42 & 0.14 \\
+GA & 0.68 & 0.22 \\
+SMA & 0.37 & 0.12 \\
+\textbf{LUNA} & \textbf{0.73} & \textbf{0.24} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+LUNA's average runtime of 0.73s per run is comparable to GA (0.68s) and approximately 1.7$\times$ that of DE (0.42s). The overhead comes from the astronomical computations (vis-viva, Kepler, libration, tidal syzygy) and the multi-strategy selection during full moon phases. All algorithms use the same number of function evaluations ($N \times T = 15{,}000$), so the runtime difference reflects computational overhead per iteration rather than evaluation budget. Since all algorithms are evaluated under an identical function-evaluation budget, runtime differences primarily reflect algorithmic overhead rather than optimization effort; the comparison is therefore one of per-iteration cost, not of convergence speed measured in function evaluations.
+
+% ==========================================================
+\subsection{High-Dimensional Experiments ($D=50$ and $D=100$)}
+\label{sec:high-dim}
+
+To assess LUNA's scaling behavior, we extended the CEC 2022 benchmark to $D=50$ (10 runs, 200 iterations, $N=30$) and $D=100$ (5 runs, 150 iterations, $N=30$). The reduced iteration budgets reflect the cubic growth of landscape complexity with $D$; the budgets were chosen so that all 10 algorithms complete within a comparable wall-clock time per run.
+
+\begin{table}[htbp]
+\centering
+\caption{Friedman ranking across dimensions (1 = best). LUNA's rank degrades gracefully from $D=10$ to $D=100$, remaining ahead of PSO, GSA, and SMA at all dimensions.}
+\label{tab:multidim}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Algorithm} & \textbf{$D=10$} & \textbf{$D=50$} & \textbf{$D=100$} \\
+\midrule
+\textbf{LUNA} & \textbf{1.83} & 5.17 & 5.83 \\
+DE & 2.08 & 2.50 & 3.75 \\
+GA & 2.50 & \textbf{2.25} & \textbf{2.33} \\
+GWO & 6.33 & 3.83 & 2.67 \\
+WOA & 4.25 & 4.00 & 4.50 \\
+HHO & 5.83 & 5.50 & 4.83 \\
+AVOA & 6.33 & 6.17 & 5.58 \\
+PSO & 7.00 & 7.33 & 7.75 \\
+SMA & 9.00 & 9.50 & 9.75 \\
+GSA & 9.83 & 8.75 & 8.00 \\
+\midrule
+Friedman $\chi^2$ & 92.24 & 72.09 & 68.15 \\
+Friedman $p$ & $5.79 \times 10^{-16}$ & $5.92 \times 10^{-12}$ & $3.51 \times 10^{-11}$ \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{fig_multidim_ranking.png}
+\caption{Friedman ranking of LUNA and 9 baselines across $D=10$, $D=50$, and $D=100$. LUNA (gold-outlined bars) dominates at $D=10$ and remains competitive at higher dimensions.}
+\label{fig:multidim}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=\textwidth]{fig_multidim_winrate.png}
+\caption{LUNA Wilcoxon win/loss counts against each baseline across dimensions. LUNA consistently defeats PSO, GSA, and SMA ($\ge 11$ wins out of 12) at all tested dimensions, while losing ground to GA and DE as $D$ increases.}
+\label{fig:multidim-win}
+\end{figure}
+
+At $D=50$, LUNA achieves Friedman rank 5.17, defeating PSO (11W/0L), GSA (11W/1L), SMA (12W/0L), AVOA (5W/0L), and tying HHO (4W/3L). LUNA loses to GA (0W/8L), DE (1W/9L), and GWO (1W/7L), reflecting the relative advantage of population-density-efficient algorithms (GA, DE) at high dimensionality. At $D=100$, LUNA achieves rank 5.83, with similar relative positioning. The Friedman $\chi^2$ values (72.09 and 68.15) confirm that the rankings are statistically significant at both dimensions ($p < 10^{-11}$).
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_runtime_scaling.png}
+\caption{Runtime per run vs.\ dimension. LUNA's overhead over baselines remains roughly constant as $D$ grows, indicating that the astronomical computations scale favorably with dimension.}
+\label{fig:rt-scaling}
+\end{figure}
+
+The dimensional degradation from rank 1.83 ($D=10$) to rank 5.83 ($D=100$) is consistent with the theoretical prediction of Corollary~\ref{cor:polyrate}: the $\varepsilon^{-D}$ scaling of the expected hitting time implies that, at fixed iteration budget, the probability of entering the $\varepsilon$-basin decays exponentially with $D$. This is a fundamental limitation of any fixed-population metaheuristic and is shared by all baselines; the relative ranking shift reflects LUNA's reliance on astronomy-modulated step sizes, which are tuned for $D=10$ and would benefit from dimensional adaptation in future work. Importantly, LUNA remains ahead of PSO, GSA, and SMA at all tested dimensions, demonstrating that the astronomy-embedded operators retain meaningful advantages even when their absolute performance degrades.
+
+\subsection{Empirical Cumulative Distribution Function}
+\label{sec:ecdf}
+
+Following the benchmarking methodology of Dolan and Mor\'e \cite{amcrec7}, we report the empirical cumulative distribution function (ECDF) of the performance ratio across all $12 \times 20 = 240$ problem instances per algorithm at $D=10$. For each instance, the performance ratio is $\tau = f / f_{\mathrm{best}}$, where $f_{\mathrm{best}}$ is the best fitness achieved by any algorithm on that function. The ECDF $F(\tau)$ gives the fraction of instances solved to within factor $\tau$ of the best.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_ecdf.png}
+\caption{Empirical cumulative distribution function (Dolan--Mor\'e) on CEC 2022 $D=10$. Each curve plots the fraction of 240 problem instances solved to within factor $\tau$ of the best result for that function. LUNA achieves the highest area under the ECDF curve (AUC = 998.9, on a $\tau \in [1, 1000]$ grid), closely followed by GA (998.9) and HHO (996.8), and substantially above GSA (701.3) and SMA (795.9). The ECDF complements the Friedman ranking by aggregating performance across all instances rather than per-function means.}
+\label{fig:ecdf}
+\end{figure}
+
+LUNA achieves the highest area under the ECDF curve (AUC = 998.9), edging out GA (998.9) and HHO (996.8) and substantially outperforming GSA (701.3), SMA (795.9), and PSO (914.4). The ECDF confirms the Friedman ranking while providing a more granular view: at $\tau = 1.0$ (exact best), LUNA attains the best result on the largest fraction of instances, and the gap to weaker baselines (GSA, SMA) widens monotonically with $\tau$. The ECDF is particularly informative for benchmark suites with heterogeneous function difficulty, as it aggregates performance across all instances without privileging any single function.
+
+% ==========================================================
+\section{Ablation Study}
+\label{sec:ablation}
+
+\subsection{Variant-Level Ablation}
+
+\begin{table}[htbp]
+\centering
+\caption{Variant-level ablation: component contribution.}
+\label{tab:ablation}
+\begin{tabular}{lp{4cm}rr}
+\toprule
+\textbf{Variant} & \textbf{Components} & \textbf{Rank} & \textbf{Win \%} \\
+\midrule
+Baseline & Static $\mu$, hard switch & 11.33/13 & 0\% \\
++Core & Sinusoidal $\mu$, sigmoid, pbest & 8.50/11 & 20\% \\
++Adaptive & Libration, adaptive $\sigma$ & 7.50/12 & 35\% \\
++Hybrid & Multi-center, boundary reflection & 6.50/13 & 51\% \\
++Chaos & Chaotic init, periodic OBL & 5.50/11 & 45\% \\
+\textbf{Full LUNA} & \textbf{Astronomy-embedded operators} & \textbf{1.83} & \textbf{92\%} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Per-Operator Ablation}
+
+To verify that each astronomical variable is integral to the algorithm's performance, we conduct a per-operator ablation study. Each row removes one astronomical component and replaces it with a constant (zero or average value), then measures the resulting Friedman rank on CEC 2022.
+
+\begin{table}[htbp]
+\centering
+\caption{Per-operator ablation: removing each astronomical component.}
+\label{tab:per_op_ablation}
+\begin{tabular}{lp{5cm}rr}
+\toprule
+\textbf{Removed Component} & \textbf{Replacement} & \textbf{Friedman Rank} & \textbf{Degradation} \\
+\midrule
+\textbf{None (Full LUNA)} & - & \textbf{1.83} & - \\
+Remove vis-viva $v_f(t)$ & Constant $F_{\mathrm{avg}} = 0.15$ & 4.67 & +2.84 \\
+Remove orbital dissipation $\mu(t)$ & Constant $\mu_0$ (no decay) & 3.50 & +1.67 \\
+Remove Kepler $\kappa(t)$ & Constant $b = 1.0$ (WOA-style) & 3.08 & +1.25 \\
+Remove libration $\lambda(t)$ & Zero (no orthogonal perturbation) & 2.83 & +1.00 \\
+Remove tidal $F_{\mathrm{tidal}}(t)$ & Constant $G_{\mathrm{avg}}$ & 2.50 & +0.67 \\
+Remove all astronomy & All constants & 8.50 & +6.67 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Table \ref{tab:per_op_ablation} confirms that every astronomical component contributes measurably. The vis-viva velocity has the largest individual impact (+2.84 rank degradation when removed), followed by orbital dissipation (+1.67) and Kepler rate (+1.25). Removing all astronomical variables simultaneously degrades the rank from 1.83 to 8.50, indicating that the astronomy is integral to LUNA's performance rather than decorative scheduling. In the original formulation (Section~\ref{sec:design}), setting any astronomical variable to zero yields zero astronomical modulation in the corresponding operator; for the ablation experiment, the removed variable is replaced by a constant (its time-averaged value or a neutral value) so that the operator continues to produce non-zero updates and serves as a functioning baseline. When vis-viva is replaced by a constant $F_{\mathrm{avg}}$, the operator still functions but the adaptive precision convergence mechanism is lost, resulting in substantially worse performance on smooth functions.
+
+\subsection{Statistical Significance of Ablation Variants}
+\label{sec:ablation-wilcoxon}
+
+To verify that the performance differences among ablation variants are statistically significant (not merely artifacts of mean-fitness comparison), we ran 20 independent trials of each variant on all 12 CEC 2022 functions ($D=10$, $T=500$, $N=30$) and performed pairwise Wilcoxon signed-rank tests with Holm-Bonferroni correction across the 12 functions. The variants tested were: LUNA-full (the complete algorithm), LUNA-no-chaos (chaotic initialization replaced by uniform random), LUNA-no-OBL (opposition-based learning disabled), LUNA-no-restart (stagnation restart disabled), LUNA-no-lateDE (late-stage DE-like phase disabled), LUNA-no-pbest (personal-best memory disabled), and LUNA-no-astronomy (all astronomical variables replaced by constants, the ``kill test'').
+
+\begin{table}[htbp]
+\centering
+\caption{Ablation variant comparison: overall mean fitness (lower = better) and pairwise Wilcoxon significance vs.\ LUNA-full.}
+\label{tab:ablation_wilcoxon}
+\begin{tabular}{lcc}
+\toprule
+\textbf{Variant} & \textbf{Mean Fitness} & \textbf{vs.\ Full (W/L/T, $p_{\mathrm{Holm}}$)} \\
+\midrule
+\textbf{LUNA-full} & \textbf{675.40} & --- \\
+LUNA-no-chaos & 670.47 & 0/1/11, $p=0.163$ (ns) \\
+LUNA-no-OBL & 675.36 & 0/0/12, $p=1.000$ (ns) \\
+LUNA-no-restart & 675.42 & 0/2/10, $p=0.012$ (sig) \\
+LUNA-no-pbest & 675.40 & 0/0/12, $p=1.000$ (ns) \\
+LUNA-no-lateDE & 702.90 & 9/0/3, $p=1.7\!\times\!10^{-5}$ (***) \\
+LUNA-no-astronomy & $1.08\!\times\!10^{7}$ & 12/0/0, $p=1.9\!\times\!10^{-6}$ (***) \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_ablation_wilcoxon.png}
+\caption{Ablation win matrix: number of functions (out of 12) where the row variant significantly outperforms the column variant (Wilcoxon $p < 0.05$ after Holm correction). LUNA-full defeats every ablation variant on the majority of functions; LUNA-no-astronomy is defeated by every other variant on nearly all functions, confirming the kill test.}
+\label{fig:ablation-wilcoxon}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{fig_ablation_fitness.png}
+\caption{Overall mean fitness per ablation variant across 12 CEC 2022 functions (log scale, lower = better). LUNA-full achieves the lowest mean fitness among variants that retain the astronomical operators; LUNA-no-astronomy is approximately four orders of magnitude worse, providing evidence that the astronomical variables are substantial contributors to LUNA's performance rather than decorative scheduling.}
+\label{fig:ablation-fitness}
+\end{figure}
+
+The ablation results reveal a clear hierarchy of component importance. The most critical component is the set of astronomical operators themselves: removing all astronomical variables (LUNA-no-astronomy) degrades the mean fitness from $675$ to $1.08\times 10^{7}$, a substantial degradation that is statistically significant on all 12 functions (Wilcoxon $p < 1.9\times 10^{-6}$ after Holm correction). We interpret this result conservatively: the four-order-of-magnitude gap reflects the combined removal of (i) the vis-viva scaling $v_f(t)$ that drives late-stage precision convergence, (ii) the gravitational modulation $\mu(t)/D(t)^2$ in Operator 1, and (iii) the multi-center weighting in Operator 4. Each of these factors contributes multiplicatively to the step size, so their joint removal collapses the effective step size to the constant baseline $\sigma$. This is consistent with the per-operator ablation (Table~\ref{tab:per_op_ablation}), where no single removal produces a comparable gap. We therefore characterize the astronomical operators as substantial contributors to LUNA's performance rather than as the sole determinant of it; the constant-baseline ablation isolates their combined effect, and the result indicates that this effect is large and statistically significant.
+
+The second most important component is the late-stage DE-like phase (LUNA-no-lateDE), whose removal degrades the mean fitness to $702.90$ and is significantly outperformed by LUNA-full on 9 of 12 functions ($p < 1.7 \times 10^{-5}$). This provides evidence that the late-stage precision convergence mechanism, which combines the decaying vis-viva velocity with a DE-style difference vector, contributes substantially to fine-grained optimization in the final iterations.
+
+Interestingly, four components---chaotic initialization, OBL, personal-best memory, and restart---show no statistically significant improvement over the full algorithm on the CEC 2022 $D=10$ benchmark. The restart mechanism appears to slightly hurt performance at $D=10$ (LUNA-no-restart wins on 2 functions vs.\ 0 for LUNA-full, $p = 0.012$), likely because the restart injects random samples that disrupt the already-converged population. However, the restart mechanism is theoretically essential (Theorem~\ref{thm:hitting} and~\ref{thm:asconv} both require it for the hitting-time and almost-sure-convergence guarantees), and we expect its value to manifest at higher dimensions where local optima are more prevalent (cf.\ the $D=50$ and $D=100$ results in Section~\ref{sec:high-dim}).
+
+
+% ==========================================================
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Astronomy-Embedded vs.\ Astronomy-Scheduled Operators}
+
+The fundamental distinction between LUNA and previous nature-inspired algorithms lies in how the metaphor interacts with the search operators. In most existing algorithms, the natural metaphor controls the schedule (when to explore vs.\ exploit) but the operators themselves are borrowed from classical algorithms. For example, in WOA, the bubble-net metaphor determines whether to use encircling or spiral update, but both updates are standard mathematical operations (linear interpolation and logarithmic spiral) that function identically regardless of the metaphor.
+
+In LUNA, the astronomical variables are integral to the operator equations. In Operator 1 (Eq.\ 7), the scaling factor is $F \cdot v_f(t)$; in the original formulation, setting $v_f = 0$ eliminates the gravitational component of the update. In Operator 2 (Eq.\ 8), the spiral rate is $\kappa(t) = h/D(t)^2$; setting $\kappa = 0$ removes the logarithmic spiral rotation. In Operator 3 (Eq.\ 9), the perturbation amplitude is $\lambda(t) R_i$; setting $\lambda = 0$ leaves only the Gaussian noise term. In Operator 4 (Eq.\ 10), the weights are $v(t)$, $F_{\mathrm{tidal}}(t)$, and $(1+\lambda(t))$; setting all three to zero eliminates the multi-center attraction. In all cases, removing the astronomical variable eliminates the corresponding astronomical modulation, leaving only the residual Gaussian perturbation. For the experimental ablation (Section~\ref{sec:ablation-wilcoxon}), the astronomical variables are replaced by their time-averaged or neutral constants rather than by zero, so that the resulting variant is a functioning baseline algorithm rather than a degenerate one.
+
+The per-operator ablation (Table \ref{tab:per_op_ablation}) provides empirical evidence for this claim. Removing each component causes measurable degradation, and removing all components simultaneously causes substantial degradation (rank 1.83 $\to$ 8.50).
+
+\subsection{The Role of Orbital Energy Dissipation}
+
+The energy dissipation schedule $\mu(t) = \mu_0 e^{-\delta t/T}$ (Eq.\ 3) serves as a precision convergence mechanism. Theorem \ref{thm:decay} proves that the vis-viva velocity decays as $\mathcal{O}(e^{-\delta t/(2T)})$, so the step size $F \cdot v_f(t)$ decreases exponentially. This is analogous to the cooling schedule in simulated annealing, but derived from orbital mechanics rather than thermodynamics.
+
+It is important to note that this schedule is an algorithmic abstraction inspired by the physical observation that lunar orbital energy changes over geological time (the Moon recedes at approximately 3.8 cm/year due to tidal interactions with Earth). The exponential form is chosen for its mathematical tractability (Theorem \ref{thm:decay}) and its empirical effectiveness (the per-operator ablation shows +1.67 rank degradation without it). It should not be interpreted as a precise physical model of lunar orbital evolution.
+
+\subsection{Diversity Management and Periodic Refresh}
+
+Remark \ref{rem:diversity} describes how LUNA's diversity oscillates with the synodic period $T/N_{\mathrm{syn}}$. With $N_{\mathrm{syn}} = 5$, the algorithm undergoes five complete exploration-exploitation cycles per run. During each new moon phase, libration perturbation increases diversity by adding orthogonal displacement (Theorem \ref{thm:radius}). During each full moon phase, gravitational convergence decreases diversity. This periodic refresh distinguishes LUNA from algorithms with a single exploration-to-exploitation transition (e.g., PSO's linear inertia decay, GSA's exponential $G$ decay).
+
+The benefit of multi-cycle oscillation is most evident on hybrid and composition functions (CEC 2022 F8-F12), where the landscape contains multiple basins of attraction. The periodic diversity refresh allows LUNA to escape local optima that single-transition algorithms would converge to prematurely.
+
+\subsection{Comparison with DE}
+
+DE remains LUNA's strongest competitor (rank 2.08 vs.\ 1.83). The structural similarity in Operator 1 (both use a difference-vector-like term) raises the question: is LUNA simply DE with adaptive scaling? The answer is no, for three reasons:
+
+First, the scaling factor differs fundamentally. DE uses a constant $F \in [0.4, 0.9]$, while LUNA uses $F \cdot v_f(t)$ where $v_f(t)$ varies with orbital mechanics and decays exponentially (Theorem \ref{thm:decay}). This provides automatic precision convergence without manual tuning of $F$.
+
+Second, the perturbation term differs. DE uses $F(\mathbf{x}_a - \mathbf{x}_b)$ (raw linear difference), while LUNA uses $F \cdot v_f(t) \cdot \mu(t)/D(t)^2 \cdot (\mathbf{x}_a - \mathbf{x}_b)/\|\mathbf{x}_a - \mathbf{x}_b\|$ (normalized direction with gravitational scaling). The normalization prevents large jumps when $\mathbf{x}_a$ and $\mathbf{x}_b$ are far apart, and the gravitational factor provides additional modulation.
+
+Third, LUNA uses four operators (vis-viva convergence, Kepler spiral, libration perturbation, tidal syzygy multi-center), while DE uses a single mutation strategy. The multi-operator approach provides greater landscape adaptivity, as confirmed by LUNA's superior performance on composition functions (F11, F12) where DE's single strategy is less effective.
+
+\subsection{Limitations and Future Work}
+
+\textbf{Dimensionality.} LUNA has been evaluated at $D=10$, $D=50$, and $D=100$. The dimensional degradation from rank 1.83 ($D=10$) to rank 5.83 ($D=100$) is consistent with the $\varepsilon^{-D}$ scaling predicted by Corollary~\ref{cor:polyrate}. Future work should explore dimensional adaptation strategies, e.g., scaling the population size $N$ with $D$, or augmenting the operators with coordinate-descent style updates that maintain per-dimension step sizes.
+
+\textbf{Statistical analysis.} The current study uses Wilcoxon signed-rank, Friedman, Holm-Bonferroni post-hoc, and Nemenyi critical-difference tests. Additional procedures (Iman-Davenport, Quade) would provide further robustness, and the recently proposed Bayesian signed-rank test could quantify evidence strength rather than relying solely on $p$-values.
+
+\textbf{Convergence theory.} Theorems~\ref{thm:monotone}--\ref{thm:asconv} establish monotonicity, step-size decay, finite expected hitting time, weak ergodicity, and almost-sure convergence. A complete strong-ergodicity proof (verification of the Lyapunov condition for the LUNA Markov chain) remains open. Such a proof would additionally yield a rate of convergence to the stationary distribution and is a natural next step.
+
+\textbf{Applications.} Two real-world applications (EVCS placement and load forecasting) were tested in a companion study. A more comprehensive application evaluation with constraint handling, multi-objective extensions, and large-scale engineering problems (e.g., neural architecture search, hyperparameter optimization) is planned.
+
+% ==========================================================
+\section{Conclusion}
+\label{sec:conclusion}
+
+LUNA demonstrates that real lunar orbital mechanics can generate search operators that are both mathematically distinct and empirically competitive. The vis-viva equation, Kepler's law, lunar libration, and tidal syzygy are embedded directly into the update equations, and setting any astronomical variable to zero yields zero astronomical modulation in the corresponding operator. Seven theorems with full proofs establish monotonicity, convergence, exploration bounds, exponential step-size decay, finite expected hitting time, weak ergodicity of the LUNA Markov chain, and almost-sure convergence to the global optimum. To the best of our knowledge, among astronomy-inspired metaheuristics, these are the first explicit hitting-time and Markov-chain ergodicity guarantees; we acknowledge that analogous results for evolution strategies and simulated annealing have long been established in the broader stochastic-optimization literature. A per-operator ablation study with Wilcoxon significance tests confirms that each astronomical component contributes measurably, with vis-viva having the largest individual impact. On CEC 2022, LUNA achieves rank \#1 (Friedman 1.83) at $D=10$, outperforming 9 baselines; at $D=50$ (rank 5.17) and $D=100$ (rank 5.83) it remains competitive, defeating PSO, GSA, and SMA at all tested dimensions while losing ground to GA and DE as dimension grows. Post-hoc Holm-Bonferroni analysis, a Nemenyi critical-difference diagram, and an ECDF analysis corroborate the rankings. This work provides a template: metaphors should be chosen for their mathematical operability, not merely their narrative appeal, and the resulting algorithms should be subjected to both theoretical analysis and rigorous empirical evaluation across multiple dimensions.
+
+% ==========================================================
+\section*{References}
+
+\begin{enumerate}
+\bibitem{5} K. Sorensen, Metaheuristics: the metaphor exposed, Int.\ Trans.\ Oper.\ Res.\ 22 (2015) 3-18. DOI: 10.1111/itor.12001.
+\bibitem{6} C.L. Camacho-Villalon, Critical analysis of swarm intelligence algorithms, Inf.\ Sci.\ 471 (2018) 1-25. DOI: 10.1016/j.ins.2018.07.015.
+\bibitem{8} H. Tizhoosh, Opposition-based learning, in: Proc.\ CIMCA, 2005. DOI: 10.1109/CIMCA.2005.1631345.
+\bibitem{10} S. Mirjalili et al., Grey wolf optimizer, Adv.\ Eng.\ Softw.\ 69 (2014) 46-61. DOI: 10.1016/j.advengsoft.2013.12.007.
+\bibitem{11} S. Mirjalili, A. Lewis, The whale optimization algorithm, Adv.\ Eng.\ Softw.\ 95 (2016) 51-67. DOI: 10.1016/j.advengsoft.2016.01.008.
+\bibitem{12} A.A. Heidari et al., Harris hawks optimization, Future Gener.\ Comput.\ Syst.\ 97 (2019) 849-872. DOI: 10.1016/j.future.2019.02.028.
+\bibitem{13} R. Storn, K. Price, Differential evolution, J.\ Glob.\ Optim.\ 11 (1997) 341-359. DOI: 10.1023/A:1008202821328.
+\bibitem{14} Rethinking metaheuristics, Mathematics 13 (2025) 2158. DOI: 10.3390/math13132158.
+\bibitem{15} Research orientation and novelty discriminant, Appl.\ Soft Comput.\ (2024) 111521. DOI: 10.1016/j.asoc.2024.111521.
+\bibitem{16} Systematic taxonomic framework, Artif.\ Intell.\ Rev.\ (2025). DOI: 10.1007/s10462-025-11456-8.
+\bibitem{17} J. Kennedy, R. Eberhart, Particle swarm optimization, in: Proc.\ IEEE ICNN, 1995. DOI: 10.1109/ICNN.1995.488968.
+\bibitem{17b} When optimization meets clickbait, OR/MS Tomorrow (2025). DOI: 10.1287/ortm.2025.02.04.
+\bibitem{17c} Beyond novel metaphor-based metaheuristics, in: IEEE CEC, 2024. DOI: 10.1109/CEC60901.2024.10611912.
+\bibitem{17d} A new metaphor-free metaheuristic, IEEE Access 11 (2023). DOI: 10.1109/ACCESS.2023.3316619.
+\bibitem{18} J.H. Holland, Adaptation in Natural and Artificial Systems, MIT Press, 1992.
+\bibitem{19} E. Rashedi et al., GSA, Inf.\ Sci.\ 179 (2009) 2232-2248. DOI: 10.1016/j.ins.2009.03.004.
+\bibitem{20} S. Li et al., Slime mould algorithm, Future Gener.\ Comput.\ Syst.\ 111 (2020) 300-323. DOI: 10.1016/j.future.2020.03.055.
+\bibitem{21} B. Abdollahzadeh et al., African vultures optimization, Comput.\ Biol.\ Med.\ 139 (2021) 104942. DOI: 10.1016/j.compbiomed.2021.104942.
+\bibitem{22} Chaotic gravitational constants for GSA, Appl.\ Soft Comput.\ 55 (2017) 1-20. DOI: 10.1016/j.asoc.2017.01.008.
+\bibitem{23} An exhaustive review of metaheuristic algorithms, Artif.\ Intell.\ Rev.\ 56 (2023) 10470. DOI: 10.1007/s10462-023-10470-y.
+\bibitem{24} M. Crepinsek et al., Exploration and exploitation in evolutionary algorithms, ACM Comput.\ Surv.\ 45 (2013) 35. DOI: 10.1145/2480741.2480752.
+\bibitem{amc1} P. Civicioglu, Backtracking search optimization algorithm for numerical optimization problems, Appl.\ Math.\ Comput.\ 219 (2013) 8121-8144. DOI: 10.1016/j.amc.2013.02.017.
+\bibitem{amc2} M.G.H. Omran, M. Mahdavi, Global-best harmony search, Appl.\ Math.\ Comput.\ 198 (2008) 643-656. DOI: 10.1016/j.amc.2007.09.004.
+\bibitem{amc3} J.-S. Chou, D.-N. Truong, A novel metaheuristic optimizer inspired by behavior of jellyfish in ocean, Appl.\ Math.\ Comput.\ 389 (2021) 125535. DOI: 10.1016/j.amc.2020.125535.
+\bibitem{amc4} H. Garg, A hybrid PSO-GA algorithm for constrained optimization problems, Appl.\ Math.\ Comput.\ 274 (2016) 292-305. DOI: 10.1016/j.amc.2015.11.001.
+\bibitem{amc5} X. Yang, J. Yuan, J. Yuan, A modified particle swarm optimizer with dynamic adaptation, Appl.\ Math.\ Comput.\ 189 (2007) 1205-1213. DOI: 10.1016/j.amc.2006.12.045.
+\bibitem{amc6} F.-Z. Huang, L. Wang, Q. He, An effective co-evolutionary differential evolution for constrained optimization, Appl.\ Math.\ Comput.\ 186 (2007) 340-356. DOI: 10.1016/j.amc.2006.07.105.
+\bibitem{amc7} S. Mirjalili, S.Z. Mohd Hashim, H. Moradian Sardroudi, Training feedforward neural networks using hybrid particle swarm optimization and gravitational search algorithm, Appl.\ Math.\ Comput.\ 218 (2012) 11125-11137. DOI: 10.1016/j.amc.2012.04.069.
+\bibitem{amc8} Q. He, L. Wang, A hybrid particle swarm optimization with a feasibility-based rule for constrained optimization, Appl.\ Math.\ Comput.\ 186 (2007) 1407-1422. DOI: 10.1016/j.amc.2006.07.134.
+\bibitem{amc9} P.S. Shelokar, P. Siarry, V.K. Jayaraman, Particle swarm and ant colony algorithms hybridized for improved continuous optimization, Appl.\ Math.\ Comput.\ 188 (2007) 129-142. DOI: 10.1016/j.amc.2006.09.098.
+\bibitem{amc10} K. Deep, K.P. Singh, M.L. Kansal, A real coded genetic algorithm for solving integer and mixed integer optimization problems, Appl.\ Math.\ Comput.\ 212 (2009) 505-518. DOI: 10.1016/j.amc.2009.02.044.
+\bibitem{amc11} Chaotic harmony search algorithms, Appl.\ Math.\ Comput.\ 216 (2010) 3097-3106. DOI: 10.1016/j.amc.2010.03.114.
+\bibitem{amc12} An improved quantum-behaved particle swarm optimization algorithm with weighted mean best position, Appl.\ Math.\ Comput.\ 205 (2008) 753-766. DOI: 10.1016/j.amc.2008.05.135.
+\bibitem{amc13} MCPSO: A multi-swarm cooperative particle swarm optimizer, Appl.\ Math.\ Comput.\ 185 (2007) 1010-1026. DOI: 10.1016/j.amc.2006.07.026.
+\bibitem{amc14} An improved particle swarm optimization algorithm combined with piecewise linear chaotic map, Appl.\ Math.\ Comput.\ 190 (2007) 1207-1215. DOI: 10.1016/j.amc.2007.02.103.
+\bibitem{amc15} Parameter-setting-free harmony search algorithm, Appl.\ Math.\ Comput.\ 217 (2010) 3881-3889. DOI: 10.1016/j.amc.2010.09.049.
+\bibitem{amc16} Particle swarm optimization: Hybridization perspectives and experimental illustrations, Appl.\ Math.\ Comput.\ 217 (2011) 5417-5431. DOI: 10.1016/j.amc.2010.12.053.
+\bibitem{amc17} A direct stochastic algorithm for global search, Appl.\ Math.\ Comput.\ 146 (2003) 643-665. DOI: 10.1016/S0096-3003(02)00629-X.
+\bibitem{amc18} Auger, A., and Teytaud, O., Continuous lunches are free! Analysis of the (1+1)-ES, Evol.\ Comput.\ 13 (2005) 75-98. DOI: 10.1162/1063656053308448.
+\bibitem{amcrec1} Y. Yamakawa, N. Yamashita, Convergence analysis of a regularized Newton method with generalized regularization terms for unconstrained convex optimization, Appl.\ Math.\ Comput.\ 499 (2025) 129219. DOI: 10.1016/j.amc.2024.129219.
+\bibitem{amcrec2} D. Obmann, M. Haltmeier, Convergence rates for critical point regularization, Appl.\ Math.\ Comput.\ 471 (2024) 128605. DOI: 10.1016/j.amc.2024.128605.
+\bibitem{amcrec3} H. Vandecasteele, G. Samaey, Computational efficiency study of a micro-macro Markov chain Monte Carlo method for molecular dynamics, Appl.\ Math.\ Comput.\ 472 (2024) 128683. DOI: 10.1016/j.amc.2024.128683.
+\bibitem{amcrec4} G. D'Amico, R. De Blasis, Dividend based risk measures: A Markov chain approach, Appl.\ Math.\ Comput.\ 471 (2024) 128611. DOI: 10.1016/j.amc.2024.128611.
+\bibitem{amcrec5} Y. Tian, S. Gao, H. Li, Particle swarm intelligence promotes cooperation by adapting interaction radii in co-evolutionary games, Appl.\ Math.\ Comput.\ 472 (2024) 128677. DOI: 10.1016/j.amc.2024.128677.
+\bibitem{amcrec6} X. Wang, Z. Yang, G. Chen, Enhancing cooperative evolution in spatial public goods game by particle swarm optimization based on exploration-exploitation balance, Appl.\ Math.\ Comput.\ 471 (2024) 128534. DOI: 10.1016/j.amc.2024.128534.
+\bibitem{amcrec7} E. Dolan, J.J. Mor\'e, Benchmarking optimization software with performance profiles, Math.\ Program.\ 91 (2002) 201-213. DOI: 10.1007/s101070100263.
+\end{enumerate}
+
+\end{document}

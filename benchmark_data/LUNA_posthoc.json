@@ -1,0 +1,22 @@
+{
+  "friedman_chi2": 108.0,
+  "friedman_p": 3.7528595813294627e-19,
+  "critical_difference": 4.590626863512215,
+  "avg_ranks": {
+    "LUNA": 7.0,
+    "PSO": 8.0,
+    "GA": 3.0,
+    "DE": 2.0,
+    "GSA": 4.0,
+    "WOA": 10.0,
+    "GWO": 5.0,
+    "HHO": 6.0,
+    "SMA": 9.0,
+    "AVOA": 1.0
+  },
+  "holm_posthoc": [
+    {
+      "algorithm": "AVOA",
+      "raw_p": 1.2084991154459601e-06,
+      "holm_p": 1.0876492039013641e-05,
+      "significant": 
